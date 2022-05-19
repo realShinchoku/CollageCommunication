@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CollageCommunication</string>
+
+    <string name="facebook_app_id" translatable="false">416225033375891</string>
+    <string name="fb_login_protocol_scheme" translatable="false">416225033375891</string>
+    <string name="facebook_client_token">EAAF6jfFC0JMBANvCYmYbFv14x4ZCPsgtsaMumxCJq0OvdU3TNcmjXKQdhboj9E2WZAl7S1WZBuw5g8ZCZAltQRt5nxA1exnOZBojTpYBQOAqSbupgZC3XBBD3ftTGssVsUK5DcGy0NnKtJksdFdu2Ixak1PL96QpkaWcdpE320Q091zUSXSqlXVB0TZCVmVeEZBIZA72qHPS90yO0v2683qLHryB1ZCVylDvqxNdx4rgFDLHgVtnBaqAG8Y</string>
+
+
 </resources>
