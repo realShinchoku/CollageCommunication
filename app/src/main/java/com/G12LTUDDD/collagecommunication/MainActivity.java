@@ -28,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
-        if(auth.getCurrentUser() == null){
+        if(auth.getCurrentUser() != null){
             Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
             startActivity(i);
         }
         else{
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_login);
 
             txtEmail = (EditText) findViewById(R.id.email);
             txtPassword = (EditText) findViewById(R.id.password);

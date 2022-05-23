@@ -9,8 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollageCommunication">
         <activity
-            android:name=".Login"
+            android:name=".RegisterActivity"
             android:exported="false" />
+        <activity android:name=".GroupChatActivity"
+            android:exported="false"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

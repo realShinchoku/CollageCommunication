@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/com_smart_login_code"
-    tools:context=".Registration">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -22,7 +22,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="100dp"
         android:gravity="center"
-        android:text="Registration"
+        android:text="Register"
         android:fontFamily="@font/roboto"
         android:textColor="#fff"
         android:textSize="35dp"
@@ -115,7 +115,7 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/have_acc"
+        android:id="@+id/loginActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logbtn"
