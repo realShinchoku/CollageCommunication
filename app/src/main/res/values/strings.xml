@@ -5,5 +5,13 @@
     <string name="fb_login_protocol_scheme" translatable="false">416225033375891</string>
     <string name="facebook_client_token">EAAF6jfFC0JMBANvCYmYbFv14x4ZCPsgtsaMumxCJq0OvdU3TNcmjXKQdhboj9E2WZAl7S1WZBuw5g8ZCZAltQRt5nxA1exnOZBojTpYBQOAqSbupgZC3XBBD3ftTGssVsUK5DcGy0NnKtJksdFdu2Ixak1PL96QpkaWcdpE320Q091zUSXSqlXVB0TZCVmVeEZBIZA72qHPS90yO0v2683qLHryB1ZCVylDvqxNdx4rgFDLHgVtnBaqAG8Y</string>
 
-
+    <!-- Strings related to login -->
+    <string name="prompt_email">Nhập email</string>
+    <string name="prompt_password">Nhập mật khẩu</string>
+    <string name="btn_sign_in">Đăng nhập bằng email</string>
+    <string name="btn_register">Đăng ký</string>
+    <string name="action_sign_in_short">Đăng nhập</string>
+    <string name="invalid_email">Email không hợp lệ</string>
+    <string name="invalid_password">Mật khẩu dài hơn 5 ký tự</string>
+    <string name="login_failed">"Đăng nhập thất bại"</string>
 </resources>
