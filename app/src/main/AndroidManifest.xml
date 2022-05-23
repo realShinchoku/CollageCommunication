@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollageCommunication">
         <activity
+            android:name=".Forgotpassword"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
