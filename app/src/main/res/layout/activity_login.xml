@@ -42,7 +42,7 @@
         android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
         android:drawablePadding="20dp"
         android:fontFamily="@font/roboto"
-        android:hint="User name"
+        android:hint="Email"
         android:padding="20dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
@@ -50,10 +50,9 @@
 
     <EditText
         android:id="@+id/txtLoginPassword"
-        android:inputType="textPassword"
-        android:layout_below="@+id/txtLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLoginEmail"
         android:layout_marginStart="10dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="10dp"
@@ -63,6 +62,7 @@
         android:drawablePadding="20dp"
         android:fontFamily="@font/roboto"
         android:hint="Password"
+        android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
@@ -70,9 +70,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLoginSignin"
-        android:layout_below="@+id/txtLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLoginPassword"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -80,32 +80,35 @@
         android:background="#fff"
         android:fontFamily="@font/roboto"
         android:text="LOGIN"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:onClick="LoginUser"/>
 
     <TextView
-        android:id="@+id/lblLoginForgotpassword"
-        android:layout_below="@+id/btnLoginSignin"
+        android:id="@+id/lblLoginForgotPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLoginSignin"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Forgot Password?"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:onClick="gotoForgotPassword"/>
 
     <TextView
         android:id="@+id/lblLoginRegister"
-        android:layout_below="@+id/lblLoginForgotpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lblLoginForgotPassword"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Create a new Account ?"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:onClick="gotoRegister"/>
 
     <TextView
         android:layout_width="match_parent"

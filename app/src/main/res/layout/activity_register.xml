@@ -48,11 +48,10 @@
         android:textColorHint="#fff" />
 
     <EditText
-        android:id="@+id/txtRegisterEnterEmail"
-        android:inputType="textEmailAddress"
-        android:layout_below="@+id/txtRegisterUsername"
+        android:id="@+id/txtRegisterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRegisterUsername"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -60,18 +59,18 @@
         android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"
-        android:hint="Your email"
         android:fontFamily="@font/roboto"
+        android:hint="Your email"
+        android:inputType="textEmailAddress"
         android:padding="20dp"
         android:textColor="#fff"
         android:textColorHint="#fff" />
 
     <EditText
         android:id="@+id/txtRegisterPassword"
-        android:inputType="textPassword"
-        android:layout_below="@+id/txtRegisterEnterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRegisterEmail"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -81,12 +80,13 @@
         android:drawablePadding="20dp"
         android:fontFamily="@font/roboto"
         android:hint="Password"
+        android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="#fff"
         android:textColorHint="#fff" />
 
     <EditText
-        android:id="@+id/txtRegisterEnterConfirmPassword"
+        android:id="@+id/txtRegisterRepeatPassword"
         android:inputType="textPassword"
         android:layout_below="@+id/txtRegisterPassword"
         android:layout_width="match_parent"
@@ -106,9 +106,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegisterSignup"
-        android:layout_below="@+id/txtRegisterEnterConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRegisterRepeatPassword"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -116,20 +116,22 @@
         android:background="#fff"
         android:fontFamily="@font/roboto"
         android:text="SIGN UP"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:onClick="RegisterUser"/>
 
     <TextView
         android:id="@+id/lblRegisterHaveacc"
-        android:layout_below="@+id/btnRegisterSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRegisterSignup"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="I have Account - Sign in"
-        android:fontFamily="@font/roboto"
         android:textColor="#fff"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:onClick="gotoLogin"/>
 
     <LinearLayout
         android:id="@+id/sociallinkRegisterlink"

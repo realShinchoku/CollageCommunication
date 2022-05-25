@@ -14,4 +14,13 @@
     <string name="invalid_email">Email không hợp lệ</string>
     <string name="invalid_password">Mật khẩu dài hơn 5 ký tự</string>
     <string name="login_failed">"Đăng nhập thất bại"</string>
+    <string name="title_activity_group_chat">GroupChatActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
