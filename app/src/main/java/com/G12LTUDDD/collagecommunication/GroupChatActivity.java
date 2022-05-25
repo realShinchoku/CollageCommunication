@@ -1,6 +1,7 @@
 package com.G12LTUDDD.collagecommunication;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,5 +22,10 @@ public class GroupChatActivity extends AppCompatActivity {
         username = (TextView) findViewById(R.id.lblGroupChatUserName);
         username.setText(auth.getCurrentUser().getEmail());
 
+    }
+
+    public void LogoutUser(View v){
+        auth.signOut();
+        onDestroy();
     }
 }
