@@ -67,7 +67,7 @@
         android:textColorHint="#fff" />
 
     <EditText
-        android:id="@+id/txtRegisterEnterPassword"
+        android:id="@+id/txtRegisterPassword"
         android:inputType="textPassword"
         android:layout_below="@+id/txtRegisterEnterEmail"
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
     <EditText
         android:id="@+id/txtRegisterEnterConfirmPassword"
         android:inputType="textPassword"
-        android:layout_below="@+id/txtRegisterEnterPassword"
+        android:layout_below="@+id/txtRegisterPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"

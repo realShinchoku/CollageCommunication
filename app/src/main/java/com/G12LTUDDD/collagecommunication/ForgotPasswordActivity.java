@@ -1,10 +1,10 @@
 package com.G12LTUDDD.collagecommunication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class Forgotpassword extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ForgotPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

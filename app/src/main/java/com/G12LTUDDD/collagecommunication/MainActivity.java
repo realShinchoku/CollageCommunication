@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         else{
             setContentView(R.layout.activity_login);
 
-            txtEmail = (EditText) findViewById(R.id.email);
-            txtPassword = (EditText) findViewById(R.id.password);
-            progressBar = (ProgressBar) findViewById(R.id.loading);
+            txtEmail = (EditText) findViewById(R.id.txtLoginEmail);
+            txtPassword = (EditText) findViewById(R.id.txtLoginPassword);
+            progressBar = (ProgressBar) findViewById(R.id.pgbLoginLoading);
             reference = FirebaseDatabase.getInstance().getReference().child("Users");
         }
 
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void forgotPassword(View v){
-
+        Intent i = new Intent(MainActivity.this,ForgotPasswordActivity.class);
+        startActivity(i);
     }
 }
