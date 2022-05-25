@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nam/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout-land/activity_forgotpassword.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Nam/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_forgotpassword.xml" value="0.25" />
+        <entry key="..\:/Users/Nam/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Nam/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_firebase_ui.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_forgotpassword.xml" value="0.25" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/activity_login.xml" value="0.35280797101449274" />
@@ -26,5 +30,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>
