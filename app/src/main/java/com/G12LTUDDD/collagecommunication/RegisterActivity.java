@@ -12,12 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.G12LTUDDD.collagecommunication.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -25,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth auth;
-    DatabaseReference reference;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.pgbRegisterLoading);
 
         auth = FirebaseAuth.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        db = FirebaseFirestore.getInstance();
     }
 
 
@@ -69,15 +72,13 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 FirebaseUser firebaseUser = auth.getCurrentUser();
-                                User u = new User();
 
-                                u.setName(username);
-                                u.setEmail(email);
+                                User u = new User(username,email);
 
-                                reference.child(firebaseUser.getUid()).setValue(u)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                db.collection("Users").add(new HashMap<String, Object>(){{put(firebaseUser.getUid(),u);}})
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                            public void onSuccess(DocumentReference documentReference) {
                                                 if(task.isSuccessful()) {
                                                     Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
                                                     progressBar.setVisibility(View.GONE);
