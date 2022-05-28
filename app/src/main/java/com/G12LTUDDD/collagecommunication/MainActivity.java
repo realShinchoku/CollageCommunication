@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         else{
             setContentView(R.layout.activity_login);
 
-            txtEmail = (EditText) findViewById(R.id.email);
-            txtPassword = (EditText) findViewById(R.id.password);
-            progressBar = (ProgressBar) findViewById(R.id.loading);
+            txtEmail = (EditText) findViewById(R.id.txtLoginEmail);
+            txtPassword = (EditText) findViewById(R.id.txtLoginPassword);
+            progressBar = (ProgressBar) findViewById(R.id.pgbLoginLoading);
             reference = FirebaseDatabase.getInstance().getReference().child("Users");
         }
 
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public void LoginUser(View v){
         progressBar.setVisibility(View.VISIBLE);
 
-        String email = txtEmail.getText().toString();
-        String password = txtPassword.getText().toString();
+        final String email = txtEmail.getText().toString();
+        final String password = txtPassword.getText().toString();
 
         if(!email.equals("") && !password.equals("")){
             auth.signInWithEmailAndPassword(email,password)
@@ -63,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
                             else {
                                 Toast.makeText(getApplicationContext(),"Sai email/mật khẩu. Hãy thử lại",Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+                                return;
                             }
                         }
                     });
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Vui lòng điền email/ mật khẩu",Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
         }
     }
 
@@ -73,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this,RegisterActivity.class);
         startActivity(i);
     }
-    public void forgotPassword(View v){
-
+    public void gotoForgotPassword(View v){
+        Intent i = new Intent(MainActivity.this,ForgotPasswordActivity.class);
+        startActivity(i);
     }
 }
