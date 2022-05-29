@@ -17,35 +17,35 @@
 
         <ImageView
             android:id="@+id/btnChatBack"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/round_back_light_10"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:id="@+id/imgChatProfilePicture"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/btnChatBack"
             android:src="@drawable/ic_baseline_account_circle_24" />
 
         <LinearLayout
-            android:layout_toEndOf="@+id/imgChatProfilePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imgChatProfilePicture"
             android:orientation="vertical">
 
             <TextView
@@ -55,7 +55,7 @@
                 android:maxLines="1"
                 android:text="User name"
                 android:textColor="#ffffff"
-                android:textSize="30dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -65,30 +65,30 @@
                 android:layout_marginTop="2dp"
                 android:text="Đang hoạt động"
                 android:textColor="#ffffff"
-                android:textSize="20sp"/>
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imgChatFaceTime"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_back_light_10"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_videocam_24"/>
+            android:src="@drawable/ic_baseline_videocam_24" />
 
         <ImageView
             android:id="@+id/imgChatCall"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
