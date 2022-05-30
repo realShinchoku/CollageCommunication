@@ -35,11 +35,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        txtUserName = (EditText) findViewById(R.id.txtRegisterUsername);
-        txtEmail = (EditText) findViewById(R.id.txtRegisterEmail);
-        txtPassword = (EditText) findViewById(R.id.txtRegisterPassword);
-        txtRepeatPassword = (EditText) findViewById(R.id.txtRegisterRepeatPassword);
-        progressBar = (ProgressBar) findViewById(R.id.pgbRegisterLoading);
+        txtUserName = findViewById(R.id.txtRegisterUsername);
+        txtEmail = findViewById(R.id.txtRegisterEmail);
+        txtPassword = findViewById(R.id.txtRegisterPassword);
+        txtRepeatPassword = findViewById(R.id.txtRegisterRepeatPassword);
+        progressBar = findViewById(R.id.pgbRegisterLoading);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -61,38 +61,48 @@ public class RegisterActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 return;
             }
-            if(!password.equals(repassword)){
+            else if(!password.equals(repassword)){
                 Toast.makeText(getApplicationContext(),"Mật khẩu không khớp",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }
             else {
+
                 auth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                FirebaseUser firebaseUser = auth.getCurrentUser();
+                                if(task.isSuccessful()) {
+                                    FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                                User u = new User(username,email);
+                                    User u = new User();
+                                    u.setEmail(email);
+                                    u.setName(username);
 
-                                db.collection("Users").add(new HashMap<String, Object>(){{put(firebaseUser.getUid(),u);}})
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                if(task.isSuccessful()) {
-                                                    Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
-                                                    progressBar.setVisibility(View.GONE);
-                                                    finish();
-                                                    Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
-                                                    startActivity(i);
+                                    db.collection("Users").add(new HashMap<String, Object>(){{put(firebaseUser.getUid(),u);}})
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                @Override
+                                                public void onSuccess(DocumentReference documentReference) {
+                                                    if(task.isSuccessful()) {
+                                                        Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
+                                                        progressBar.setVisibility(View.GONE);
+                                                        finish();
+                                                        Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
+                                                        startActivity(i);
+                                                    }
+                                                    else{
+                                                        Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
+                                                        progressBar.setVisibility(View.GONE);
+                                                        return;
+                                                    }
                                                 }
-                                                else{
-                                                    Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
-                                                    progressBar.setVisibility(View.GONE);
-                                                    return;
-                                                }
-                                            }
-                                        });
+                                            });
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),"Email đã tồn tại",Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    return;
+                                }
                             }
                         });
             }

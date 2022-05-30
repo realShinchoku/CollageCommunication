@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         else{
             setContentView(R.layout.activity_login);
 
-            txtEmail = (EditText) findViewById(R.id.txtLoginEmail);
-            txtPassword = (EditText) findViewById(R.id.txtLoginPassword);
-            progressBar = (ProgressBar) findViewById(R.id.pgbLoginLoading);
+            txtEmail = findViewById(R.id.txtLoginEmail);
+            txtPassword = findViewById(R.id.txtLoginPassword);
+            progressBar = findViewById(R.id.pgbLoginLoading);
             reference = FirebaseDatabase.getInstance().getReference().child("Users");
         }
 

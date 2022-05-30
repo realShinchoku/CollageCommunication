@@ -1,13 +1,22 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
 public class User {
-    String name, email;
+    String uid,name, email;
 
     public User() {}
 
-    public User(String name, String email) {
+    public User(String uid, String name, String email) {
+        this.uid = uid;
         this.name = name;
         this.email = email;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
@@ -29,7 +38,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "uid='" + uid + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
