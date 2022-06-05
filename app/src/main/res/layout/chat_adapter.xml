@@ -8,33 +8,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/ChatReplyOppoLayout"
-            android:layout_marginStart="20dp"
             android:layout_marginEnd="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgChatOppo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:paddingBottom="5dp"
+                android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/lblChatReplyOppoMes"
-                android:background="@drawable/opo_msg_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:textColor="#424242"
-                android:text="This is opponent message"/>
+                android:layout_toEndOf="@+id/imgChatOppo"
+                android:background="@drawable/opo_msg_back"
+                android:padding="13dp"
+                android:text="This is opponent message"
+                android:textColor="#424242" />
 
             <TextView
                 android:id="@+id/lblChatReplyOppoTime"
+                android:layout_below="@+id/lblChatReplyOppoMes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
+                android:layout_marginStart="45dp"
                 android:layout_marginTop="5dp"
                 android:text="29-05-2022 11:50"
                 android:visibility="invisible"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/ChatReplyMyLayout"
@@ -50,7 +60,7 @@
                 android:background="@drawable/my_msg_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="13dp"
                 android:textColor="#ffffff"
                 android:text="This is my message"/>
 

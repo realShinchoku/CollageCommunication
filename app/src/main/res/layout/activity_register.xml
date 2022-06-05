@@ -30,10 +30,9 @@
 
     <EditText
         android:id="@+id/txtRegisterUsername"
-        android:inputType="text"
-        android:layout_below="@+id/lblRegisterTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lblRegisterTitle"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -41,8 +40,9 @@
         android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
         android:drawablePadding="20dp"
-        android:hint="User name"
         android:fontFamily="@font/roboto"
+        android:hint="User name"
+        android:inputType="text"
         android:padding="20dp"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -115,9 +115,9 @@
         android:layout_marginBottom="10dp"
         android:background="#fff"
         android:fontFamily="@font/roboto"
+        android:onClick="RegisterUser"
         android:text="SIGN UP"
-        android:textSize="20sp"
-        android:onClick="RegisterUser"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/lblRegisterHaveacc"
