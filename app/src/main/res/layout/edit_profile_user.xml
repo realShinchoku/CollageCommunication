@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/EditProfileUserHeader"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/com_smart_login_code">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ImgEditProfileUser"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/EditProfileUserHeader"
+        android:src="@drawable/ic_baseline_account_circle_black"
+        android:layout_gravity="center"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/txtEditProfileUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30000000"
+            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="User name"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"/>
+
+        <EditText
+            android:id="@+id/txtEditProfileEmail"
+            android:layout_below="@+id/txtEditProfileUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30000000"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Mail"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"/>
+
+        <EditText
+            android:id="@+id/txtEditProfilePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEditProfileEmail"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30000000"
+            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Pass"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditProfileUserSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEditProfilePass"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#4782B1"
+            android:fontFamily="@font/roboto"
+            android:onClick="RegisterUser"
+            android:text="SAVE"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditProfileUserCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnEditProfileUserSave"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#9DC2DF"
+            android:fontFamily="@font/roboto"
+            android:onClick="RegisterUser"
+            android:text="Cancel"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
