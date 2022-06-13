@@ -114,11 +114,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/llosociallinkLoginlink"
-        android:text="Or sign in with"
-        android:textColor="#fff"
         android:fontFamily="@font/roboto"
         android:gravity="center"
-        android:textSize="16sp"/>
+        android:text="Or sign in with"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/llosociallinkLoginlink"
@@ -129,14 +129,14 @@
 
         <ImageView
             android:id="@+id/imgLoginGoogle"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="20dp"
             android:src="@drawable/googleg_standard_color_18"/>
         <ImageView
             android:id="@+id/imgLoginFacebook"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="20dp"
             android:src="@drawable/com_facebook_button_icon"/>
 
