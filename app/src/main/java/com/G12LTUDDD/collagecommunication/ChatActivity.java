@@ -36,7 +36,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
     FirebaseAuth auth;
     FirebaseDatabase db;
-    DatabaseReference messagedb;
+    DatabaseReference messageDb;
     MessageAdapter messageAdapter;
     User u;
     List<Message> messages;
@@ -67,7 +67,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         if(!TextUtils.isEmpty(etInput.getText().toString())){
             Message message = new Message(etInput.getText().toString(),u.getName());
             etInput.setText("");
-            messagedb.push().setValue(message);
+            messageDb.push().setValue(message);
         }
     }
 
@@ -110,8 +110,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        messagedb = db.getReference("Messages");
-        messagedb.addChildEventListener(new ChildEventListener() {
+        messageDb = db.getReference("Messages");
+        messageDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Message message = snapshot.getValue(Message.class);
@@ -179,7 +179,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
     private void displayMessages(List<Message> messages){
         rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
-        messageAdapter = new MessageAdapter(ChatActivity.this,messages,messagedb);
+        messageAdapter = new MessageAdapter(ChatActivity.this,messages,messageDb);
         rvMessage.setAdapter(messageAdapter);
     }
 }

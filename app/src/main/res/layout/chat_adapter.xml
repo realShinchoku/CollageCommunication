@@ -8,9 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/llChatItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgChatUserAvatar"
@@ -46,11 +48,11 @@
             <ImageButton
                 android:id="@+id/btnChatDelete"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@drawable/ic_baseline_delete_24"
                 android:background="#fff"
-                android:padding="5dp"
-                android:visibility="invisible"
+                android:gravity="center"
+                android:visibility="visible"
                 />
         </LinearLayout>
 
