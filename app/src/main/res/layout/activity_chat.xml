@@ -28,11 +28,12 @@
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:id="@+id/imgChatProfilePicture"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
@@ -99,7 +100,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-
+        android:id="@+id/rvChatMessage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/chatBottom"
@@ -115,7 +116,7 @@
         android:paddingBottom="10dp">
 
         <EditText
-
+            android:id="@+id/txtChatInput"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
@@ -125,8 +126,8 @@
             android:hint="Type something..."
             android:textSize="14sp" />
 
-        <ImageView
-
+        <ImageButton
+            android:id="@+id/imgBChatSend"
             android:src="@drawable/ic_baseline_send_24"
             android:layout_width="50dp"
             android:layout_height="50dp"

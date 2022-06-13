@@ -1,81 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:id="@+id/ChatReplyOppoLayout"
-            android:layout_marginEnd="50dp"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgChatOppo"
+                android:id="@+id/imgChatUserAvatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:paddingBottom="5dp"
                 android:src="@mipmap/ic_launcher" />
 
-            <TextView
-                android:id="@+id/lblChatReplyOppoMes"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/imgChatOppo"
-                android:background="@drawable/opo_msg_back"
-                android:padding="13dp"
-                android:text="This is opponent message"
-                android:textColor="#424242" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lblChatReplyOppoTime"
-                android:layout_below="@+id/lblChatReplyOppoMes"
+                <TextView
+                    android:id="@+id/tvChatMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/opo_msg_back"
+                    android:padding="8dp"
+                    android:text="This is message"
+                    android:textSize="14sp"
+                    android:textColor="#424242" />
+
+                <TextView
+                    android:id="@+id/tvChatMessageTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="29-05-2022 11:50"
+                    android:textSize="11sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <ImageButton
+                android:id="@+id/btnChatDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="5dp"
-                android:text="29-05-2022 11:50"
-                android:visibility="invisible"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/ChatReplyMyLayout"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/lblChatReplyMyMes"
-                android:background="@drawable/my_msg_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="13dp"
-                android:textColor="#ffffff"
-                android:text="This is my message"/>
-
-            <TextView
-                android:id="@+id/lblChatReplyMyTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:layout_marginTop="5dp"
-                android:text="29-05-2022 11:50"
-                android:layout_gravity="end"
-                android:visibility="invisible"/>
-
+                />
         </LinearLayout>
 
-    </RelativeLayout>
-
-</RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
