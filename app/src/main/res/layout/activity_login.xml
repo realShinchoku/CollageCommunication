@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,147 +7,151 @@
     android:background="@color/com_smart_login_code"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imgSigninLogo"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/lblLoginTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="75dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="Sign in"
-        android:textColor="#fff"
-        android:textSize="40sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/txtLoginEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblLoginTitle"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:textSize="17sp" />
-
-    <EditText
-        android:id="@+id/txtLoginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtLoginEmail"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:textSize="17sp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginSignin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtLoginPassword"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#fff"
-        android:fontFamily="@font/roboto"
-        android:onClick="LoginUser"
-        android:text="LOGIN"
-        android:textSize="19sp" />
-
-    <TextView
-        android:id="@+id/lblLoginForgotPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLoginSignin"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="Forgot Password?"
-        android:textColor="#fff"
-        android:textSize="16sp"
-        android:onClick="gotoForgotPassword"/>
-
-    <TextView
-        android:id="@+id/lblLoginRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblLoginForgotPassword"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="Create a new Account ?"
-        android:textColor="#fff"
-        android:textSize="16sp"
-        android:onClick="gotoRegister"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/llosociallinkLoginlink"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="Or sign in with"
-        android:textColor="#fff"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:id="@+id/llosociallinkLoginlink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgLoginGoogle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/googleg_standard_color_18"/>
-        <ImageView
-            android:id="@+id/imgLoginFacebook"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/com_facebook_button_icon"/>
+            android:id="@+id/imgSigninLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/lblLoginTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgSigninLogo"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="Sign in"
+            android:textColor="#fff"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/pgbLoginLoading"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/txtLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblLoginTitle"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <EditText
+            android:id="@+id/txtLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLoginEmail"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLoginPassword"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fff"
+            android:fontFamily="@font/roboto"
+            android:onClick="LoginUser"
+            android:text="LOGIN"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/lblLoginForgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLoginSignin"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:onClick="gotoForgotPassword"
+            android:text="Forgot Password?"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lblLoginRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblLoginForgotPassword"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Create a new Account ?"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:onClick="gotoRegister"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llosociallinkLoginlink"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Or sign in with"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/llosociallinkLoginlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgLoginGoogle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="2dp"
+                android:src="@drawable/googleg_standard_color_18" />
+
+            <ImageView
+                android:id="@+id/imgLoginFacebook"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="2dp"
+                android:src="@drawable/com_facebook_button_icon" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pgbLoginLoading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

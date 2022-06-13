@@ -28,11 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto"
             android:text="Tin nhắn"
             android:textColor="#ffff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto"/>
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imgMessagesMoreChoice"

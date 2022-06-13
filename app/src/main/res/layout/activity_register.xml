@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,158 +7,162 @@
     android:background="@color/com_smart_login_code"
     tools:context=".RegisterActivity">
 
-    <ImageView
-        android:id="@+id/imgRegisterLogo"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/lblRegisterTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:text="Register"
-        android:fontFamily="@font/roboto"
-        android:textColor="#fff"
-        android:textSize="35dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/txtRegisterUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblRegisterTitle"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="User name"
-        android:inputType="text"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff" />
-
-    <EditText
-        android:id="@+id/txtRegisterEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtRegisterUsername"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="Your email"
-        android:inputType="textEmailAddress"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff" />
-
-    <EditText
-        android:id="@+id/txtRegisterPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtRegisterEmail"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff" />
-
-    <EditText
-        android:id="@+id/txtRegisterRepeatPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtRegisterPassword"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/roboto"
-        android:hint="Confirm password"
-        android:inputType="textPassword"
-        android:padding="20dp"
-        android:textColor="#fff"
-        android:textColorHint="#fff" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegisterSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtRegisterRepeatPassword"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#fff"
-        android:fontFamily="@font/roboto"
-        android:onClick="RegisterUser"
-        android:text="SIGN UP"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/lblRegisterHaveacc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnRegisterSignup"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="I have Account - Sign in"
-        android:textColor="#fff"
-        android:textSize="16sp"
-        android:onClick="gotoLogin"/>
-
-    <LinearLayout
-        android:id="@+id/sociallinkRegisterlink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/googleg_standard_color_18"/>
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/com_facebook_button_icon"/>
+            android:id="@+id/imgRegisterLogo"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/lblRegisterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgRegisterLogo"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="Register"
+            android:fontFamily="@font/roboto"
+            android:textColor="#fff"
+            android:textSize="35dp"
+            android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/pgbRegisterLoading"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/txtRegisterUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblRegisterTitle"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="User name"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <EditText
+            android:id="@+id/txtRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRegisterUsername"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Your email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <EditText
+            android:id="@+id/txtRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRegisterEmail"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <EditText
+            android:id="@+id/txtRegisterRepeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRegisterPassword"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Confirm password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegisterSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRegisterRepeatPassword"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fff"
+            android:fontFamily="@font/roboto"
+            android:onClick="RegisterUser"
+            android:text="SIGN UP"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/lblRegisterHaveacc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRegisterSignup"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:onClick="gotoLogin"
+            android:text="I have Account - Sign in"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/sociallinkRegisterlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="2dp"
+                android:src="@drawable/googleg_standard_color_18"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="2dp"
+                android:src="@drawable/com_facebook_button_icon"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pgbRegisterLoading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
 
 
-</RelativeLayout>
+
+
+</LinearLayout>
