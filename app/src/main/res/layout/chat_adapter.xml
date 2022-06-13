@@ -47,6 +47,10 @@
                 android:id="@+id/btnChatDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_delete_24"
+                android:background="#fff"
+                android:padding="5dp"
+                android:visibility="invisible"
                 />
         </LinearLayout>
 
