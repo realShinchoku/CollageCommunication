@@ -5,26 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/com_smart_login_code"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imgSigninLogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/lblLoginTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgSigninLogo"
             android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:layout_centerHorizontal="true"
             android:text="Sign in"
             android:textColor="#fff"
             android:textSize="35sp"
@@ -34,13 +29,12 @@
             android:id="@+id/txtLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lblLoginTitle"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:background="#30ffffff"
             android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
-            android:drawablePadding="10dp"
+            android:drawablePadding="15dp"
             android:fontFamily="@font/roboto"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -59,7 +53,7 @@
             android:layout_marginBottom="10dp"
             android:background="#30ffffff"
             android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawablePadding="20dp"
+            android:drawablePadding="15dp"
             android:fontFamily="@font/roboto"
             android:hint="Password"
             android:inputType="textPassword"
@@ -82,18 +76,19 @@
             android:text="LOGIN"
             android:textSize="19sp" />
 
-        <TextView
-            android:id="@+id/lblLoginForgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnLoginSignin"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:onClick="gotoForgotPassword"
-            android:text="Forgot Password?"
-            android:textColor="#fff"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/lblLoginForgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLoginSignin"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:onClick="gotoForgotPassword"
+        android:text="Forgot Password?"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
         <TextView
             android:id="@+id/lblLoginRegister"
@@ -108,15 +103,16 @@
             android:textSize="16sp"
             android:onClick="gotoRegister"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/llosociallinkLoginlink"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="Or sign in with"
-            android:textColor="#fff"
-            android:textSize="16sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llosociallinkLoginlink"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Or sign in with"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
         <LinearLayout
             android:id="@+id/llosociallinkLoginlink"
@@ -149,9 +145,5 @@
             android:layout_height="30dp"
             android:layout_centerInParent="true"
             android:visibility="invisible"/>
-
-
-    </RelativeLayout>
-
 
 </LinearLayout>

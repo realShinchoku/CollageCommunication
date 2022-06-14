@@ -5,11 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/com_smart_login_code"
+    android:orientation="vertical"
     tools:context=".RegisterActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imgRegisterLogo"
@@ -30,29 +27,27 @@
             android:textSize="35dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/txtRegisterUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lblRegisterTitle"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="#30ffffff"
-            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/roboto"
-            android:hint="User name"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/txtRegisterUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:hint="User name"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/txtRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtRegisterUsername"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -70,7 +65,6 @@
             android:id="@+id/txtRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtRegisterEmail"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -88,7 +82,6 @@
             android:id="@+id/txtRegisterRepeatPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtRegisterPassword"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -107,7 +100,6 @@
             android:id="@+id/btnRegisterSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtRegisterRepeatPassword"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -122,7 +114,6 @@
             android:id="@+id/lblRegisterHaveacc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnRegisterSignup"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
@@ -136,7 +127,6 @@
             android:id="@+id/sociallinkRegisterlink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:gravity="center">
 
             <ImageView
@@ -158,11 +148,7 @@
             android:id="@+id/pgbRegisterLoading"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerInParent="true"
+            android:layout_gravity="center"
             android:visibility="invisible"/>
-    </RelativeLayout>
-
-
-
 
 </LinearLayout>

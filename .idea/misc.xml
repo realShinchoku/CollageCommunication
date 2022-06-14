@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2155" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2195" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.2155" />
+        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.2565" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.217" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2155" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/my_msg_back.xml" value="0.2155" />
@@ -32,7 +33,7 @@
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_adapter.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_main.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_messages.xml" value="0.266051912568306" />
-        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.3151041666666667" />
+        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/homepage.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/messages_main.xml" value="0.22" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
