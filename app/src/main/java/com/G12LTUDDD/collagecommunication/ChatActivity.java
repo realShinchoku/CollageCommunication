@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChatActivity extends AppCompatActivity {
 
 
     FirebaseAuth auth;
@@ -62,7 +62,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         messages = new ArrayList<>();
     }
 
-    @Override
     public void onClick(View v) {
         if(!TextUtils.isEmpty(etInput.getText().toString())){
             Message message = new Message(etInput.getText().toString(),u.getName());
