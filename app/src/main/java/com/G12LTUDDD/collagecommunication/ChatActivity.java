@@ -61,9 +61,9 @@ public class ChatActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         if(!TextUtils.isEmpty(etInput.getText().toString())){
-            Message message = new Message(etInput.getText().toString(),u.getName());
+//            Message message = new Message(etInput.getText().toString(),u.getName());
             etInput.setText("");
-            messageDb.push().setValue(message);
+//            messageDb.push().setValue(message);
         }
     }
 
@@ -73,14 +73,12 @@ public class ChatActivity extends AppCompatActivity {
         super.onStart();
         final FirebaseUser curUser = auth.getCurrentUser();
 
-        u.setUid(curUser.getUid());
         u.setEmail(curUser.getEmail());
 
         db.getReference("Users").child(curUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 u = snapshot.getValue(User.class);
-                u.setUid(curUser.getUid());
                 AllMethods.name = u.getName();
             }
 

@@ -53,6 +53,7 @@
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/opo_msg_back.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/round_back_light_10.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/search.xml" value="0.3835" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/font/roboto.xml" value="0.42864583333333334" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_chat.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_firebase_ui.xml" value="0.3596014492753623" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_forgotpassword.xml" value="0.3984375" />
@@ -63,6 +64,7 @@
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_registration.xml" value="0.3596014492753623" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/chat_adapter.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/chat_messages.xml" value="0.3984375" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/group_adapter.xml" value="0.39739583333333334" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/login.xml" value="0.3596014492753623" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/messages_main.xml" value="0.3984375" />

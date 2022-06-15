@@ -12,15 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.G12LTUDDD.collagecommunication.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -76,13 +72,16 @@ public class RegisterActivity extends AppCompatActivity {
                                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
                                     User u = new User();
+                                    u.setUid(firebaseUser.getUid());
                                     u.setEmail(email);
                                     u.setName(username);
 
-                                    db.collection("Users").add(new HashMap<String, Object>(){{put(firebaseUser.getUid(),u);}})
-                                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    db.collection("Users")
+                                            .document(u.getUid())
+                                            .set(u)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
-                                                public void onSuccess(DocumentReference documentReference) {
+                                                public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()) {
                                                         Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
                                                         progressBar.setVisibility(View.GONE);

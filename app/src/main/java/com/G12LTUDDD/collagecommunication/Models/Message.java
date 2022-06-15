@@ -1,17 +1,31 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
-import java.time.LocalDateTime;
+import com.google.firebase.Timestamp;
 
 public class Message {
     String message,name,key;
-    LocalDateTime time;
+    Timestamp time;
+    boolean isDelete = false;
 
     public  Message(){}
 
-    public Message(String message, String name) {
+    public Message(String message, String name, String key, Timestamp time, boolean isDelete) {
         this.message = message;
         this.name = name;
+        this.key = key;
         this.time = time;
+        this.isDelete = isDelete;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                ", name='" + name + '\'' +
+                ", key='" + key + '\'' +
+                ", time=" + time +
+                ", isDelete=" + isDelete +
+                '}';
     }
 
     public String getMessage() {
@@ -38,21 +52,19 @@ public class Message {
         this.key = key;
     }
 
-    public LocalDateTime getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "message='" + message + '\'' +
-                ", name='" + name + '\'' +
-                ", key='" + key + '\'' +
-                ", time=" + time +
-                '}';
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }
