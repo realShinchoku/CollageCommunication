@@ -129,6 +129,7 @@
                 android:padding="2dp"
                 android:src="@drawable/googleg_standard_color_18" />
 
+
             <ImageView
                 android:id="@+id/imgLoginFacebook"
                 android:layout_width="40dp"

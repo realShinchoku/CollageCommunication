@@ -1,10 +1,7 @@
 package com.G12LTUDDD.collagecommunication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -70,22 +67,6 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.menuLogout){
-            auth.signOut();
-            finish();
-            startActivity(new Intent(ChatActivity.this,MainActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onStart() {
