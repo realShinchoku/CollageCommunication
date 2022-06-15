@@ -4,13 +4,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:padding="5dp">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civGroupItem"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:padding="5dp"
+        android:padding="7dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/com_facebook_profile_picture_blank_portrait"/>
 
     <LinearLayout
@@ -32,13 +34,15 @@
             android:layout_height="wrap_content"
             android:text="Message"
             android:textSize="14sp"
-            android:padding="2dp" />
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvTimeGroupItem"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
         android:text="12:54"
         android:textStyle="bold"/>
 </LinearLayout>
