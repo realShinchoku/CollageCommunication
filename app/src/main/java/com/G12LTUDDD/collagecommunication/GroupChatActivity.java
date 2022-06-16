@@ -108,9 +108,6 @@ public class GroupChatActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void displayGroups(List<Group> groups){
         rvGroup.setLayoutManager(new LinearLayoutManager(GroupChatActivity.this));
         groupAdapter = new GroupAdapter(GroupChatActivity.this,groups,db);

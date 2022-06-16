@@ -2,7 +2,6 @@ package com.G12LTUDDD.collagecommunication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -48,8 +47,9 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView rvMessage;
 
     EditText etInput;
-    ImageButton ibSend,ibBack,ibCall,ibVideo;
+    ImageButton ibSend, ibBack, ibCall, ibVideo;
     TextView tvGroupName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    public void init(){
+    public void init() {
 
         Intent i = getIntent();
         group = (Group) i.getExtras().getSerializable("group");
@@ -79,14 +79,13 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(ChatActivity.this,GroupChatActivity.class));
             }
         });
 
         ibSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!etInput.getText().toString().equals("")){
+                if (!etInput.getText().toString().equals("")) {
                     Message message = new Message();
                     message.setValue(etInput.getText().toString());
                     message.setGid(group.getGid());
@@ -95,9 +94,9 @@ public class ChatActivity extends AppCompatActivity {
                     db.collection("Messages").add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentReference> task) {
-                            if(task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 message.setKey(task.getResult().getId());
-                                db.collection("Messages").document(message.getKey()).update("key",message.getKey());
+                                db.collection("Messages").document(message.getKey()).update("key", message.getKey());
                                 etInput.setText("");
                             }
                         }
@@ -105,12 +104,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
 
         final FirebaseUser curUser = auth.getCurrentUser();
         u.setUid(curUser.getUid());
@@ -126,7 +120,7 @@ public class ChatActivity extends AppCompatActivity {
 
         db.collection("Messages")
                 .orderBy("time", Query.Direction.ASCENDING)
-                .whereEqualTo("gid",group.getGid())
+                .whereEqualTo("gid", group.getGid())
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -134,22 +128,23 @@ public class ChatActivity extends AppCompatActivity {
 
                         }
                         messages = new ArrayList<>();
-                        for(QueryDocumentSnapshot doc : value){
+                        for (QueryDocumentSnapshot doc : value) {
                             Message message = doc.toObject(Message.class);
                             messages.add(message);
                         }
-                        displayMessages(messages,u);
+                        displayMessages(messages, u);
                     }
                 });
 
 
     }
 
-    private void displayMessages(List<Message> messages,User u){
+    private void displayMessages(List<Message> messages, User u) {
         rvMessage.setHasFixedSize(true);
         rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
-        messageAdapter = new MessageAdapter(ChatActivity.this,messages,db,u.getUid());
+        messageAdapter = new MessageAdapter(ChatActivity.this, messages, db, u.getUid());
         rvMessage.setAdapter(messageAdapter);
-        rvMessage.getLayoutManager().smoothScrollToPosition(rvMessage,null, messageAdapter.getItemCount()-1);
+        rvMessage.getLayoutManager().smoothScrollToPosition(rvMessage, null, messageAdapter.getItemCount() - 1);
     }
+
 }
