@@ -8,7 +8,7 @@
     android:background="#9CDDDCDC">
 
     <LinearLayout
-        android:id="@+id/profileHeader"
+        android:id="@+id/ProfileHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -37,7 +37,7 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/ibCallChat"
+            android:id="@+id/ibEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/com_smart_login_code"
@@ -47,7 +47,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ImgEditProfileUser"
+        android:id="@+id/ImgProfileUser"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:padding="5dp"
@@ -63,7 +63,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtEditProfileUserName"
+            android:id="@+id/txtProfileUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -77,7 +77,7 @@
             android:textColorHint="#A3000000"/>
 
         <TextView
-            android:id="@+id/txtEditProfileClass"
+            android:id="@+id/txtProfileClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -90,7 +90,7 @@
             android:textColorHint="#A3000000" />
 
         <TextView
-            android:id="@+id/txtEditProfileMSV"
+            android:id="@+id/txtProfileMSV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -113,7 +113,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtEditProfilePhone"
+            android:id="@+id/txtProfilePhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -127,7 +127,7 @@
             android:textColorHint="#A3000000" />
 
         <TextView
-            android:id="@+id/txtEditProfileAdress"
+            android:id="@+id/txtProfileAdress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -150,7 +150,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtEditProfileUserEmail"
+            android:id="@+id/txtProfileUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -164,7 +164,7 @@
             android:textColorHint="#A3000000" />
 
         <TextView
-            android:id="@+id/txtEditProfilePassword"
+            android:id="@+id/txtProfilePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

@@ -8,7 +8,7 @@
     android:background="#9CDDDCDC">
 
     <LinearLayout
-        android:id="@+id/profileHeader"
+        android:id="@+id/EditProfileHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -16,15 +16,15 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackProfile"
+            android:id="@+id/ibBackEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/com_smart_login_code"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+            android:src="@drawable/ic_baseline_close_big_24"/>
 
         <TextView
-            android:id="@+id/tvHeaderProfile"
+            android:id="@+id/tvHeaderEditProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:maxLines="1"
@@ -37,12 +37,12 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/ibCallChat"
+            android:id="@+id/ibEditProfileUserSave"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/com_smart_login_code"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_edit_24" />
+            android:src="@drawable/ic_baseline_check_24" />
 
     </LinearLayout>
 
@@ -56,7 +56,7 @@
         android:layout_gravity="center"/>
 
     <LinearLayout
-        android:id="@+id/ProfileUser"
+        android:id="@+id/EditProfileUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/color_radius"
@@ -103,7 +103,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ProfileUserLocation"
+        android:id="@+id/EditProfileUserLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -140,7 +140,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ProfileAccount"
+        android:id="@+id/EditProfileAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -175,21 +175,5 @@
             android:textColorHint="#A3000000" />
 
     </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnProfileUSerSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/btn_radius_background_blue"
-        android:fontFamily="@font/roboto"
-        android:onClick="SaveProfileUser"
-        android:text="SAVE"
-        android:textColor="#fff"
-        android:textSize="19sp" />
-
 
 </LinearLayout>
