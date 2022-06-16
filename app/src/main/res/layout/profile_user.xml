@@ -62,42 +62,44 @@
         android:background="@drawable/color_radius"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfileUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Họ và tên"
             android:inputType="text"
-            android:textColorHint="#A3000000" />
+            android:textSize="16sp"
+            android:textColorHint="#A3000000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfileClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Lớp"
             android:inputType="text"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfileMSV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Mã sinh viên"
             android:inputType="text"
-            android:background="@null"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
     </LinearLayout>
@@ -110,31 +112,31 @@
         android:background="@drawable/color_radius"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfilePhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="SĐT"
             android:inputType="text"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfileAdress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Địa chỉ"
             android:inputType="text"
-            android:background="@null"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
     </LinearLayout>
@@ -147,49 +149,33 @@
         android:background="@drawable/color_radius"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfileUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Email"
             android:inputType="text"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtEditProfilePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:hint="Mật khẩu"
             android:inputType="text"
-            android:background="@null"
+            android:textSize="16sp"
             android:textColorHint="#A3000000" />
 
     </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnProfileUSerSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/btn_radius_background_blue"
-        android:fontFamily="@font/roboto"
-        android:onClick="SaveProfileUser"
-        android:text="SAVE"
-        android:textColor="#fff"
-        android:textSize="19sp" />
-
 
 </LinearLayout>
