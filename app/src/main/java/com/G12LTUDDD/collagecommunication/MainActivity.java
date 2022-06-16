@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
         if(auth.getCurrentUser() != null){
+            finish();
             Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
             startActivity(i);
         }
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 progressBar.setVisibility(View.GONE);
                                 Toast.makeText(getApplicationContext(),"Thành công",Toast.LENGTH_SHORT).show();
+                                finish();
                                 Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
                                 startActivity(i);
                             }

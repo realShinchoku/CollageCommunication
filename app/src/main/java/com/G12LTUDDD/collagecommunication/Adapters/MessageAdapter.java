@@ -1,6 +1,7 @@
 package com.G12LTUDDD.collagecommunication.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +13,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.G12LTUDDD.collagecommunication.Models.Message;
-import com.G12LTUDDD.collagecommunication.Models.User;
 import com.G12LTUDDD.collagecommunication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageAdapterViewHolder> {
 
     Context context;
     List<Message> messages;
     FirebaseFirestore db;
-    User u;
+    String uid;
 
-    public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, User u) {
+    public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, String uid) {
         this.context = context;
         this.messages = messages;
         this.db = db;
-        this.u = u;
+        this.uid = uid;
     }
 
     @NonNull
@@ -42,11 +48,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     @Override
     public void onBindViewHolder(@NonNull MessageAdapterViewHolder holder, int position) {
         Message message = messages.get(position);
+
         holder.tvValue.setText(message.getValue());
         String time = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(message.getTime());
         holder.tvTime.setText(time);
 
-        if (message.getUid().equals(u.getUid())) {
+        if (message.getUid().equals(uid)) {
+            holder.civImg.setVisibility(View.GONE);
             holder.tvValue.setBackgroundResource(R.drawable.my_msg_back);
             holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
@@ -69,6 +77,33 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
                 }
             });
         }
+        else {
+            db.collection("Users")
+                    .document(message.getUid())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful())
+                                if (!task.getResult().get("img").equals(""))
+                                    Picasso.get().load(task.getResult().get("img").toString()).into(holder.civImg);
+                        }
+                    });
+            holder.civImg.setVisibility(View.VISIBLE);
+            holder.tvValue.setBackgroundResource(R.drawable.opo_msg_back);
+            holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+
+            holder.tvValue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (holder.tvTime.getVisibility() == View.GONE) {
+                        holder.tvTime.setVisibility(View.VISIBLE);
+                    } else {
+                        holder.tvTime.setVisibility(View.GONE);
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -77,13 +112,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     }
 
     public class MessageAdapterViewHolder extends RecyclerView.ViewHolder {
-
-        TextView tvValue, tvTime;
-        ImageButton ibDelete;
-        LinearLayout ll;
+        public CircleImageView civImg;
+        public TextView tvValue, tvTime;
+        public ImageButton ibDelete;
+        public LinearLayout ll;
 
         public MessageAdapterViewHolder(View itemView) {
             super(itemView);
+            civImg = itemView.findViewById(R.id.civChatItem);
             tvValue = itemView.findViewById(R.id.tvValueChatItem);
             tvTime = itemView.findViewById(R.id.tvTimeChatItem);
             ibDelete = itemView.findViewById(R.id.ibChatItem);

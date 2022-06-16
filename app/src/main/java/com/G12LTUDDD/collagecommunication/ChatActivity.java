@@ -71,46 +71,17 @@ public class ChatActivity extends AppCompatActivity {
         rvMessage = findViewById(R.id.rvChatMessage);
         etInput = findViewById(R.id.etChat);
         ibSend = findViewById(R.id.ibSendChat);
+        ibBack = findViewById(R.id.ibBackChat);
         tvGroupName = findViewById(R.id.tvChat);
         tvGroupName.setText(group.getName());
 
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        final FirebaseUser curUser = auth.getCurrentUser();
-        u.setUid(curUser.getUid());
-        u.setEmail(curUser.getEmail());
-
-
-        db.collection("Users").document(u.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                u = documentSnapshot.toObject(User.class);
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(ChatActivity.this,GroupChatActivity.class));
             }
         });
-
-        db.collection("Messages")
-                .orderBy("time", Query.Direction.ASCENDING)
-                .whereEqualTo("gid",group.getGid())
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.w("error", "Listen failed.", error);
-                            return;
-                        }
-
-                        messages = new ArrayList<>();
-                        for(QueryDocumentSnapshot doc : value){
-                            Message message = doc.toObject(Message.class);
-                            messages.add(message);
-                        }
-                        displayMessages(messages,u);
-                    }
-                });
 
         ibSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +107,49 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        final FirebaseUser curUser = auth.getCurrentUser();
+        u.setUid(curUser.getUid());
+        u.setEmail(curUser.getEmail());
+
+
+        db.collection("Users").document(u.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                u = documentSnapshot.toObject(User.class);
+            }
+        });
+
+        db.collection("Messages")
+                .orderBy("time", Query.Direction.ASCENDING)
+                .whereEqualTo("gid",group.getGid())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+
+                        }
+                        messages = new ArrayList<>();
+                        for(QueryDocumentSnapshot doc : value){
+                            Message message = doc.toObject(Message.class);
+                            messages.add(message);
+                        }
+                        displayMessages(messages,u);
+                    }
+                });
+
+
+    }
+
     private void displayMessages(List<Message> messages,User u){
-        rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
         rvMessage.setHasFixedSize(true);
-        messageAdapter = new MessageAdapter(ChatActivity.this,messages,db,u);
+        rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
+        messageAdapter = new MessageAdapter(ChatActivity.this,messages,db,u.getUid());
         rvMessage.setAdapter(messageAdapter);
+        rvMessage.getLayoutManager().smoothScrollToPosition(rvMessage,null, messageAdapter.getItemCount()-1);
     }
 }

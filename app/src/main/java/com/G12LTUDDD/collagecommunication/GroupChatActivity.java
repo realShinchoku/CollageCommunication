@@ -113,7 +113,6 @@ public class GroupChatActivity extends AppCompatActivity {
 
     private void displayGroups(List<Group> groups){
         rvGroup.setLayoutManager(new LinearLayoutManager(GroupChatActivity.this));
-        rvGroup.setHasFixedSize(true);
         groupAdapter = new GroupAdapter(GroupChatActivity.this,groups,db);
         rvGroup.setAdapter(groupAdapter);
     }
