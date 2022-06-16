@@ -1,47 +1,25 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
-import com.google.firebase.Timestamp;
+import java.util.Date;
 
 public class Message {
-    String message,name,key;
-    Timestamp time;
-    boolean isDelete = false;
+    String gid,value,uid,key;
+    Date time;
 
-    public  Message(){}
-
-    public Message(String message, String name, String key, Timestamp time, boolean isDelete) {
-        this.message = message;
-        this.name = name;
+    public Message(String gid, String value, String uid, String key, Date time) {
+        this.gid = gid;
+        this.value = value;
+        this.uid = uid;
         this.key = key;
         this.time = time;
-        this.isDelete = isDelete;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "message='" + message + '\'' +
-                ", name='" + name + '\'' +
-                ", key='" + key + '\'' +
-                ", time=" + time +
-                ", isDelete=" + isDelete +
-                '}';
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Message() {
+        this.gid = "";
+        this.value = "";
+        this.uid = "";
+        this.key = "";
+        this.time = new Date();
     }
 
     public String getKey() {
@@ -52,19 +30,46 @@ public class Message {
         this.key = key;
     }
 
-    public Timestamp getTime() {
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
+    @Override
+    public String toString() {
+        return "Message{" +
+                "gid='" + gid + '\'' +
+                ", value='" + value + '\'' +
+                ", uid='" + uid + '\'' +
+                ", key='" + key + '\'' +
+                ", time=" + time +
+                '}';
     }
 }

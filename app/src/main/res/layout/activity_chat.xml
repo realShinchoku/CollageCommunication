@@ -12,65 +12,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btnChatBack"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/round_back_light_10"
+            android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:id="@+id/imgChatProfilePicture"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:id="@+id/crcvChat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_margin="5dp"
             android:src="@drawable/ic_baseline_account_circle_24" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvChat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:text="Group name"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/lblChatNameUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="User name"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/lblChatStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Đang hoạt động"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgChatFaceTime"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+        <ImageButton
+            android:id="@+id/ibVideoChat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/round_back_light_10"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_videocam_24" />
 
-        <ImageView
-            android:id="@+id/imgChatCall"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
+        <ImageButton
+            android:id="@+id/ibCallChat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/round_back_light_10"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_call_24" />
@@ -80,30 +64,29 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChatMessage"
         android:layout_width="match_parent"
-        android:layout_height="640dp" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
     <LinearLayout
-        android:id="@+id/chatBottom"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:background="#ffffff"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtChatInput"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/etChat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:backgroundTint="@android:color/transparent"
-            android:hint="Type something..."
+            android:hint="Chat here"
+            android:layout_weight="1"
             android:textSize="14sp" />
 
         <ImageButton
-            android:id="@+id/imgBChatSend"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_alignParentEnd="true"
-            android:onClick="onClick"
-            android:src="@drawable/ic_baseline_send_24" />
+            android:id="@+id/ibSendChat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:backgroundTint="@android:color/transparent"/>
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.G12LTUDDD.collagecommunication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.G12LTUDDD.collagecommunication.ChatActivity;
 import com.G12LTUDDD.collagecommunication.Models.Group;
 import com.G12LTUDDD.collagecommunication.R;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,10 +42,24 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
 
     @Override
     public void onBindViewHolder(@NonNull GroupAdapterViewHolder holder, int position) {
+
         Group group = groups.get(position);
+        if(!group.getImg().equals(""))
+            Picasso.get().load(group.getImg()).into(holder.civImg);
         holder.tvName.setText(group.getName());
-        holder.tvMsg.setText("test");
-        holder.tvTime.setText("12:07");
+        if(group.getLastMsg().equals(""))
+            holder.tvMsg.setText(group.getLastMsg());
+        String time = new java.text.SimpleDateFormat("HH:mm").format(group.getModTime());
+        holder.tvTime.setText(time);
+
+        holder.llItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ChatActivity.class);
+                i.putExtra("group", group);
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override

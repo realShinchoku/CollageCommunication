@@ -1,10 +1,12 @@
 package com.G12LTUDDD.collagecommunication;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,17 +15,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.G12LTUDDD.collagecommunication.Adapters.MessageAdapter;
-import com.G12LTUDDD.collagecommunication.Models.AllMethods;
+import com.G12LTUDDD.collagecommunication.Models.Group;
 import com.G12LTUDDD.collagecommunication.Models.Message;
 import com.G12LTUDDD.collagecommunication.Models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,39 +40,40 @@ public class ChatActivity extends AppCompatActivity {
 
 
     FirebaseAuth auth;
-    FirebaseDatabase db;
-    DatabaseReference messageDb;
-    MessageAdapter messageAdapter;
+    FirebaseFirestore db;
     User u;
+    Group group;
     List<Message> messages;
-
+    MessageAdapter messageAdapter;
     RecyclerView rvMessage;
-    EditText etInput;
-    ImageButton imgBSend;
 
+    EditText etInput;
+    ImageButton ibSend,ibBack,ibCall,ibVideo;
+    TextView tvGroupName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         init();
+
     }
 
     public void init(){
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
-        u = new User();
-        rvMessage = findViewById(R.id.rvChatMessage);
-        etInput = findViewById(R.id.txtChatInput);
-        imgBSend = findViewById(R.id.imgBChatSend);
-        messages = new ArrayList<>();
-    }
 
-    public void onClick(View v) {
-        if(!TextUtils.isEmpty(etInput.getText().toString())){
-//            Message message = new Message(etInput.getText().toString(),u.getName());
-            etInput.setText("");
-//            messageDb.push().setValue(message);
-        }
+        Intent i = getIntent();
+        group = (Group) i.getExtras().getSerializable("group");
+
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        u = new User();
+        messages = new ArrayList<>();
+
+        rvMessage = findViewById(R.id.rvChatMessage);
+        etInput = findViewById(R.id.etChat);
+        ibSend = findViewById(R.id.ibSendChat);
+        tvGroupName = findViewById(R.id.tvChat);
+        tvGroupName.setText(group.getName());
+
     }
 
 
@@ -72,92 +81,65 @@ public class ChatActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         final FirebaseUser curUser = auth.getCurrentUser();
-
+        u.setUid(curUser.getUid());
         u.setEmail(curUser.getEmail());
 
-        db.getReference("Users").child(curUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                u = snapshot.getValue(User.class);
-                AllMethods.name = u.getName();
-            }
 
+        db.collection("Users").document(u.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                u = documentSnapshot.toObject(User.class);
             }
         });
 
-        messageDb = db.getReference("Messages");
-        messageDb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Message message = snapshot.getValue(Message.class);
-                message.setKey(snapshot.getKey());
-                messages.add(message);
+        db.collection("Messages")
+                .orderBy("time", Query.Direction.ASCENDING)
+                .whereEqualTo("gid",group.getGid())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.w("error", "Listen failed.", error);
+                            return;
+                        }
 
-                displayMessages(messages);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Message message = snapshot.getValue(Message.class);
-                message.setKey(snapshot.getKey());
-
-                List<Message> newMessages = new ArrayList<Message>();
-
-                for(Message m:messages){
-                    if(m.getKey().equals(message.getKey())){
-                        newMessages.add(message);
+                        messages = new ArrayList<>();
+                        for(QueryDocumentSnapshot doc : value){
+                            Message message = doc.toObject(Message.class);
+                            messages.add(message);
+                        }
+                        displayMessages(messages,u);
                     }
-                    else {
-                        newMessages.add(m);
-                    }
+                });
+
+        ibSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!etInput.getText().toString().equals("")){
+                    Message message = new Message();
+                    message.setValue(etInput.getText().toString());
+                    message.setGid(group.getGid());
+                    message.setUid(u.getUid());
+                    message.setTime(Timestamp.now().toDate());
+                    db.collection("Messages").add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            if(task.isSuccessful()){
+                                message.setKey(task.getResult().getId());
+                                db.collection("Messages").document(message.getKey()).update("key",message.getKey());
+                                etInput.setText("");
+                            }
+                        }
+                    });
                 }
-
-                messages = newMessages;
-                displayMessages(messages);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                Message message = snapshot.getValue(Message.class);
-                message.setKey(snapshot.getKey());
-
-                List<Message> newMessages = new ArrayList<Message>();
-
-                for(Message m:messages){
-                    if(m.getKey().equals(message.getKey())){
-                        newMessages.add(m);
-                    }
-                }
-
-                messages = newMessages;
-                displayMessages(messages);
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        messages = new ArrayList<Message>();
-    }
-
-    private void displayMessages(List<Message> messages){
+    private void displayMessages(List<Message> messages,User u){
         rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
-        messageAdapter = new MessageAdapter(ChatActivity.this,messages,messageDb);
+        rvMessage.setHasFixedSize(true);
+        messageAdapter = new MessageAdapter(ChatActivity.this,messages,db,u);
         rvMessage.setAdapter(messageAdapter);
     }
 }

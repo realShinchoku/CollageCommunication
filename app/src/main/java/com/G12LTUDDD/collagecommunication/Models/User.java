@@ -1,7 +1,7 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
 public class User {
-    String uid,name, email,img;
+    String uid="",name="", email="",img="";
 
     public User() {}
 

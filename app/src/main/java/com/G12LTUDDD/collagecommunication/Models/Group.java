@@ -1,39 +1,42 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
-import java.util.HashMap;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Group {
-        String gid,name,img;
+public class Group implements Serializable {
+        String gid,name,img,lastMsg;
         List<String> users;
         List<String> admins;
-        HashMap<String, Message> messages;
-        boolean status = true;
+        Date modTime;
+        boolean status;
 
-        public  Group(){}
 
-        public Group(String gid, String name, String img, List<String> users, List<String> admins, HashMap<String, Message> messages, boolean status) {
+        public  Group(){
+                this.gid = "";
+                this.name = "";
+                this.img = "";
+                this.lastMsg = "";
+                this.users = new ArrayList<>();
+                this.admins = new ArrayList<>();
+                this.modTime = new Date();
+                this.status = true;
+        }
+
+
+        public Group(String gid, String name, String img, String lastMsg, List<String> users, List<String> admins, Date modTime, boolean status) {
                 this.gid = gid;
                 this.name = name;
                 this.img = img;
+                this.lastMsg = lastMsg;
                 this.users = users;
                 this.admins = admins;
-                this.messages = messages;
+                this.modTime = modTime;
                 this.status = status;
         }
 
-        @Override
-        public String toString() {
-                return "Group{" +
-                        "gid='" + gid + '\'' +
-                        ", name='" + name + '\'' +
-                        ", img='" + img + '\'' +
-                        ", users=" + users +
-                        ", admins=" + admins +
-                        ", messages=" + messages +
-                        ", status=" + status +
-                        '}';
-        }
 
         public String getGid() {
                 return gid;
@@ -75,12 +78,34 @@ public class Group {
                 this.admins = admins;
         }
 
-        public HashMap<String, Message> getMessages() {
-                return messages;
+        @Override
+        public String toString() {
+                return "Group{" +
+                        "gid='" + gid + '\'' +
+                        ", name='" + name + '\'' +
+                        ", img='" + img + '\'' +
+                        ", lastMsg='" + lastMsg + '\'' +
+                        ", users=" + users +
+                        ", admins=" + admins +
+                        ", modTime=" + modTime +
+                        ", status=" + status +
+                        '}';
         }
 
-        public void setMessages(HashMap<String, Message> messages) {
-                this.messages = messages;
+        public String getLastMsg() {
+                return lastMsg;
+        }
+
+        public void setLastMsg(String lastMsg) {
+                this.lastMsg = lastMsg;
+        }
+
+        public Date getModTime() {
+                return modTime;
+        }
+
+        public void setModTime(Date modTime) {
+                this.modTime = modTime;
         }
 
         public boolean isStatus() {

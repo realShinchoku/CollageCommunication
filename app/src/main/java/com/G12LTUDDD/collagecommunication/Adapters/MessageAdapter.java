@@ -1,7 +1,6 @@
 package com.G12LTUDDD.collagecommunication.Adapters;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.G12LTUDDD.collagecommunication.Models.AllMethods;
 import com.G12LTUDDD.collagecommunication.Models.Message;
+import com.G12LTUDDD.collagecommunication.Models.User;
 import com.G12LTUDDD.collagecommunication.R;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -23,40 +22,52 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
 
     Context context;
     List<Message> messages;
-    DatabaseReference messageDb;
+    FirebaseFirestore db;
+    User u;
 
-
-    public MessageAdapter(Context context, List<Message> messages, DatabaseReference messageDb) {
+    public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, User u) {
         this.context = context;
         this.messages = messages;
-        this.messageDb = messageDb;
+        this.db = db;
+        this.u = u;
     }
-
-
-
 
     @NonNull
     @Override
     public MessageAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.chat_adapter,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.chat_adapter, parent, false);
         return new MessageAdapterViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapterViewHolder holder, int position) {
         Message message = messages.get(position);
+        holder.tvValue.setText(message.getValue());
+        String time = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(message.getTime());
+        holder.tvTime.setText(time);
 
-        if(message.getName().equals(AllMethods.name)){
-            holder.tvTitle.setText(message.getMessage());
-            holder.tvTitle.setGravity(Gravity.CENTER);
-            holder.tvTitle.setBackgroundResource(R.drawable.my_msg_back);
+        if (message.getUid().equals(u.getUid())) {
+            holder.tvValue.setBackgroundResource(R.drawable.my_msg_back);
             holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        }
-        else{
-            holder.tvTitle.setText(message.getMessage());
-            holder.tvTitle.setGravity(Gravity.CENTER);
-            holder.tvTitle.setBackgroundResource(R.drawable.opo_msg_back);
-            holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+
+            holder.tvValue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (holder.tvTime.getVisibility() == View.GONE) {
+                        holder.tvTime.setVisibility(View.VISIBLE);
+                        holder.ibDelete.setVisibility(View.VISIBLE);
+                    } else {
+                        holder.tvTime.setVisibility(View.GONE);
+                        holder.ibDelete.setVisibility(View.GONE);
+                    }
+                }
+            });
+            holder.ibDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.collection("Messages").document(message.getKey()).delete();
+                }
+            });
         }
     }
 
@@ -66,22 +77,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     }
 
     public class MessageAdapterViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle;
+
+        TextView tvValue, tvTime;
         ImageButton ibDelete;
         LinearLayout ll;
 
-        public MessageAdapterViewHolder(View itemView){
+        public MessageAdapterViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvChatMessage);
-            ibDelete = (ImageButton) itemView.findViewById(R.id.btnChatDelete);
-            ll = (LinearLayout) itemView.findViewById(R.id.llChatItems);
-
-            ibDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    messageDb.child(messages.get(getAdapterPosition()).getKey()).removeValue();
-                }
-            });
+            tvValue = itemView.findViewById(R.id.tvValueChatItem);
+            tvTime = itemView.findViewById(R.id.tvTimeChatItem);
+            ibDelete = itemView.findViewById(R.id.ibChatItem);
+            ll = itemView.findViewById(R.id.llChatItem);
         }
     }
 }
