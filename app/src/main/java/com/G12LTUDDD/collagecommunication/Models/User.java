@@ -1,6 +1,8 @@
 package com.G12LTUDDD.collagecommunication.Models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     String uid="",name="", email="",img="";
 
     public User() {}
