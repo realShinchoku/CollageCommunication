@@ -12,6 +12,7 @@
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/btn_radius.xml" value="0.2565" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/btn_radius_background_blue.xml" value="0.259" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/color_radius.xml" value="0.2565" />
+        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/color_radius_textview.xml" value="0.259" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2155" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_account_circle_black.xml" value="0.215" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.2565" />
@@ -39,11 +40,13 @@
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_adapter.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_main.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/chat_messages.xml" value="0.266051912568306" />
+        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_group.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/group_adapter.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/group_chat_adapter.xml" value="0.3125" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/homepage.xml" value="0.35280797101449274" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/messages_main.xml" value="0.22" />
+        <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/new_chat_group.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/profile_user.xml" value="0.33" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/layout.xml" value="0.4109375" />
