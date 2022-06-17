@@ -35,6 +35,7 @@
         android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/tvEditProfileGroupImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tên nhóm"
@@ -44,6 +45,7 @@
         android:fontFamily="@font/roboto"/>
 
     <TextView
+        android:id="@+id/tvEditProfileGroupEditNameOrImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đổi tên hoặc ảnh"
