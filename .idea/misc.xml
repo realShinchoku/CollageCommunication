@@ -48,6 +48,16 @@
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/messages_main.xml" value="0.22" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/new_chat_group.xml" value="0.33" />
         <entry key="..\:/Users/Pirom/AndroidStudioProjects/CollageCommunication/app/src/main/res/layout/profile_user.xml" value="0.33" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.332" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_account_circle_black.xml" value="0.332" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_account_circle_black_120dp.xml" value="0.332" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.332" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_group_chat.xml" value="0.3625" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_register.xml" value="0.3625" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_user.xml" value="0.3625" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.2798913043478261" />
+        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/profile_user.xml" value="0.3625" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/layout.xml" value="0.4109375" />
         <entry key="..\:/WorkSpace/Android/CollageCommunication/app/src/main/res/layout/main_activity.xml" value="0.4109375" />
@@ -73,12 +83,14 @@
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_main.xml" value="0.23958333333333334" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_register.xml" value="0.23958333333333334" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_registration.xml" value="0.3596014492753623" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/activity_user.xml" value="0.24878345498783455" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/chat_adapter.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/chat_messages.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.3984375" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/group_adapter.xml" value="0.39739583333333334" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/login.xml" value="0.3596014492753623" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/messages_main.xml" value="0.3984375" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/layout/profile_user.xml" value="0.33" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/menu/menu.xml" value="0.3984375" />
       </map>
     </option>

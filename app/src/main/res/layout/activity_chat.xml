@@ -19,9 +19,13 @@
             android:id="@+id/ibBackChat"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:background="@drawable/btn_radius_background_blue"
+=======
+>>>>>>> 89f83ef6091871efaf217c69fa6e2a075ae30d7b
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:backgroundTint="@android:color/transparent"/>
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:id="@+id/crcvChat"
@@ -47,17 +51,25 @@
             android:id="@+id/ibVideoChat"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:background="@drawable/btn_radius_background_blue"
+=======
+>>>>>>> 89f83ef6091871efaf217c69fa6e2a075ae30d7b
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_videocam_24" />
+            android:src="@drawable/ic_baseline_videocam_24"
+            android:backgroundTint="@android:color/transparent"/>
 
         <ImageButton
             android:id="@+id/ibCallChat"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:background="@drawable/btn_radius_background_blue"
+=======
+>>>>>>> 89f83ef6091871efaf217c69fa6e2a075ae30d7b
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_call_24" />
+            android:src="@drawable/ic_baseline_call_24"
+            android:backgroundTint="@android:color/transparent"/>
 
     </LinearLayout>
 

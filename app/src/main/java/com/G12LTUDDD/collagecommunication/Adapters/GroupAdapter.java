@@ -47,8 +47,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         if(!group.getImg().equals(""))
             Picasso.get().load(group.getImg()).into(holder.civImg);
         holder.tvName.setText(group.getName());
-        if(group.getLastMsg().equals(""))
-            holder.tvMsg.setText(group.getLastMsg());
+        holder.tvMsg.setText(group.getLastMsg());
         String time = new java.text.SimpleDateFormat("HH:mm").format(group.getModTime());
         holder.tvTime.setText(time);
 
@@ -57,7 +56,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
             public void onClick(View v) {
                 Intent i = new Intent(context, ChatActivity.class);
                 i.putExtra("group", group);
-                v.getContext().startActivity(i);
+                context.startActivity(i);
             }
         });
     }
