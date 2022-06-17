@@ -1,9 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    android:orientation="vertical"
+    android:background="#9CDDDCDC">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/ProfileHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/com_smart_login_code"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/ibBackProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/com_smart_login_code"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <TextView
+            android:id="@+id/tvHeaderProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:text="Profile user"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/ibEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/com_smart_login_code"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ImgProfileUser"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:padding="5dp"
+        android:layout_below="@+id/EditProfileUserHeader"
+        android:src="@drawable/ic_baseline_account_circle_black_120dp"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/ProfileUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/color_radius"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtProfileUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Họ và tên"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000"/>
+
+        <TextView
+            android:id="@+id/txtProfileClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Lớp"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+        <TextView
+            android:id="@+id/txtProfileMSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Mã sinh viên"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ProfileUserLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/color_radius"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtProfilePhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="SĐT"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+        <TextView
+            android:id="@+id/txtProfileAdress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Địa chỉ"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ProfileAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/color_radius"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtProfileUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Email"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+        <TextView
+            android:id="@+id/txtProfilePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Mật khẩu"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColorHint="#A3000000" />
+
+    </LinearLayout>
+
+</LinearLayout>
