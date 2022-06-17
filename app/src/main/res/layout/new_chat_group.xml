@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context=".GroupChatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/com_smart_login_code"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imgNewGroupBack"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_baseline_close_big_24"
+            android:background="@color/com_smart_login_code"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto"
+            android:text="Nhóm mới"
+            android:textColor="#ffff"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textAlignment="center"/>
+
+        <ImageButton
+            android:id="@+id/ibNewGroupDone"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="6dp"
+            android:background="@color/com_smart_login_code"
+            android:src="@drawable/ic_baseline_check_24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/ivNewGroupImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user_icon"
+            android:layout_marginLeft="10dp"
+            android:padding="7dp"/>
+
+        <EditText
+            android:id="@+id/etNewGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đặt tên nhóm"
+            android:background="@null"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svNewGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search"
+        android:layout_margin="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/color_radius">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNewChatGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
