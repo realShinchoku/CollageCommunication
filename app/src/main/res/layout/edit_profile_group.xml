@@ -8,7 +8,7 @@
     android:background="48DDDCDC">
 
     <LinearLayout
-        android:id="@+id/EditProfileGroupHeader"
+        android:id="@+id/ProfileGroupHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -16,7 +16,7 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackEditGroupHeader"
+            android:id="@+id/ibBackGroupHeader"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/btn_radius_background_blue"
@@ -27,28 +27,46 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ImgEditProfileGroup"
+        android:id="@+id/ImgProfileGroup"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:padding="5dp"
         android:src="@drawable/ic_baseline_account_circle_black"
         android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvEditProfileGroupImage"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tên nhóm"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:fontFamily="@font/roboto"/>
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvProfileGroupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Tên nhóm"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/ibProfileGroupEditNickName"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/tvProfileGroupName"
+            android:background="48DDDCDC"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+    </RelativeLayout>
+
 
     <TextView
-        android:id="@+id/tvEditProfileGroupEditNameOrImage"
+        android:id="@+id/tvProfileGroupEditImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đổi tên hoặc ảnh"
+        android:text="Đổi ảnh"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:textColor="@color/com_smart_login_code"
@@ -89,7 +107,7 @@
                     android:src="@drawable/ic_baseline_circle_notifications_24"/>
 
                 <TextView
-                    android:id="@+id/tvEditProfileGroupNotice"
+                    android:id="@+id/tvProfileGroupNotice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thông báo"
@@ -117,7 +135,7 @@
                     android:src="@drawable/ic_baseline_groups_24"/>
 
                 <TextView
-                    android:id="@+id/tvEditProfileGroupSeeMember"
+                    android:id="@+id/tvProfileGroupSeeMember"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Xem thành viên"
@@ -145,7 +163,7 @@
                     android:src="@drawable/ic_baseline_person_add_24"/>
 
                 <TextView
-                    android:id="@+id/tvEditProfileGroupAddMember"
+                    android:id="@+id/tvProfileGroupAddMember"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thêm thành viên"
@@ -194,7 +212,7 @@
                     android:src="@drawable/ic_baseline_warning_24"/>
 
                 <TextView
-                    android:id="@+id/tvEditProfileGroupReport"
+                    android:id="@+id/tvProfileGroupReport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Báo cáo"
@@ -222,7 +240,7 @@
                     android:src="@drawable/ic_baseline_logout_24"/>
 
                 <TextView
-                    android:id="@+id/tvEditProfileGroupOutGroup"
+                    android:id="@+id/tvProfileGroupOutGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rời khỏi nhóm"

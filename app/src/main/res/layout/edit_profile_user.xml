@@ -8,7 +8,7 @@
     android:background="48DDDCDC">
 
     <LinearLayout
-        android:id="@+id/EditProfileUserHeader"
+        android:id="@+id/ProfileUserHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -16,7 +16,7 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackEditProfileUserHeader"
+            android:id="@+id/ibBackProfileUserHeader"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/btn_radius_background_blue"
@@ -27,28 +27,44 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ImgEditProfileUser"
+        android:id="@+id/ImgProfileUser"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:padding="5dp"
         android:src="@drawable/ic_baseline_account_circle_black"
         android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvProfileUserName"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tên người dùng"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:fontFamily="@font/roboto"/>
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvProfileUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Tên người dùng"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/ibProfileUserEditNickName"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/tvProfileUserName"
+            android:background="48DDDCDC"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/tvEditProfileUserNameOrImage"
+        android:id="@+id/tvProfileUserEditImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đổi tên hoặc ảnh"
+        android:text="Đổi ảnh"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:textColor="@color/com_smart_login_code"
@@ -88,15 +104,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_account_circle_black"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserName"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Họ và tên"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserInfoName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="Họ và tên"
+                        android:textSize="16sp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditInfoName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <ImageView
@@ -116,15 +150,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_groups_24"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserClass"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lớp"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserInfoClass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lớp"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <ImageView
@@ -144,15 +196,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_assignment_ind_24"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserMSV"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mã sinh viên"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserInfoMSV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mã sinh viên"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditMSV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -193,15 +263,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_smartphone_24"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserPhone"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Số điện thoại"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserConnectPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Số điện thoại"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditConnectPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <ImageView
@@ -221,15 +309,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_email_black_24"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserMail"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserConnectMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditConnectEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <ImageView
@@ -249,15 +355,33 @@
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/ic_baseline_password_24"/>
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserPass"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Password"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProfileUserConnectPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Password"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/ibProfileUserEditConnectPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="48DDDCDC"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_baseline_edit_18dp_24"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
