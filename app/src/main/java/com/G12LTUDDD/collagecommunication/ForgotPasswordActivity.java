@@ -7,11 +7,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
@@ -34,19 +31,16 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         final String email = txtEmail.getText().toString();
         if(!email.equals("")){
             auth.sendPasswordResetEmail(email)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(getApplicationContext(),"Thành công, vui lòng kiểm tra hộp thư của bạn",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ForgotPasswordActivity.this,MainActivity.class);
-                                startActivity(i);
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(),"Lỗi, vui lòng kiểm tra email của bạn",Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
-                            }
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(),"Thành công, vui lòng kiểm tra hộp thư của bạn",Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(ForgotPasswordActivity.this,MainActivity.class);
+                            startActivity(i);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Lỗi, vui lòng kiểm tra email của bạn",Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     });
         }

@@ -3,13 +3,11 @@ package com.G12LTUDDD.collagecommunication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,13 +22,9 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,67 +74,53 @@ public class ChatActivity extends AppCompatActivity {
 
 
         db.collection("Users").document(u.getUid())
-                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.w("TAG", "Listen failed.", error);
-                            return;
-                        }
-                        if(value.exists()) {
-                            u = value.toObject(User.class);
-                        }
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        Log.w("TAG", "Listen failed.", error);
+                        return;
+                    }
+                    if(value.exists()) {
+                        u = value.toObject(User.class);
                     }
                 });
 
         db.collection("Messages")
                 .orderBy("time", Query.Direction.ASCENDING)
                 .whereEqualTo("gid", group.getGid())
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            return;
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        return;
+                    }
+                    if(!value.isEmpty()) {
+                        messages = new ArrayList<>();
+                        for (QueryDocumentSnapshot doc : value) {
+                            Message message = doc.toObject(Message.class);
+                            messages.add(message);
                         }
-                        if(!value.isEmpty()) {
-                            messages = new ArrayList<>();
-                            for (QueryDocumentSnapshot doc : value) {
-                                Message message = doc.toObject(Message.class);
-                                messages.add(message);
-                            }
-                            displayMessages(messages, u.getUid());
-                        }
+                        displayMessages(messages, u.getUid());
                     }
                 });
 
-        ibBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        ibBack.setOnClickListener(view -> finish());
 
-        ibSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!etInput.getText().toString().equals("")) {
-                    Message message = new Message();
-                    message.setValue(etInput.getText().toString());
-                    etInput.setText("");
-                    message.setGid(group.getGid());
-                    message.setUid(u.getUid());
-                    message.setTime(Timestamp.now().toDate());
-                    db.collection("Messages").add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentReference> task) {
-                            if (task.isSuccessful()) {
-                                message.setKey(task.getResult().getId());
-                                db.collection("Messages").document(message.getKey()).update("key", message.getKey());
-                                db.collection("Groups").document(group.getGid()).update("lastMsg",message.getValue(),"modTime",message.getTime());
-                            }
+        ibSend.setOnClickListener(v -> {
+            if (!etInput.getText().toString().equals("")) {
+                Message message = new Message();
+                message.setValue(etInput.getText().toString());
+                etInput.setText("");
+                message.setGid(group.getGid());
+                message.setUid(u.getUid());
+                message.setTime(Timestamp.now().toDate());
+                db.collection("Messages").add(message).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if (task.isSuccessful()) {
+                            message.setKey(task.getResult().getId());
+                            db.collection("Messages").document(message.getKey()).update("key", message.getKey());
+                            db.collection("Groups").document(group.getGid()).update("lastMsg",message.getValue(),"modTime",message.getTime());
                         }
-                    });
-                }
+                    }
+                });
             }
         });
     }

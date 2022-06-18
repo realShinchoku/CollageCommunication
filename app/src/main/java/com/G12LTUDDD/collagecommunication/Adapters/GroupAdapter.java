@@ -51,13 +51,10 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         String time = new java.text.SimpleDateFormat("HH:mm").format(group.getModTime());
         holder.tvTime.setText(time);
 
-        holder.llItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, ChatActivity.class);
-                i.putExtra("group", group);
-                context.startActivity(i);
-            }
+        holder.llItem.setOnClickListener(v -> {
+            Intent i = new Intent(context, ChatActivity.class);
+            i.putExtra("group", group);
+            context.startActivity(i);
         });
     }
 

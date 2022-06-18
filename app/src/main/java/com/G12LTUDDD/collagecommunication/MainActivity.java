@@ -7,12 +7,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,21 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
         if(!email.equals("") && !password.equals("")){
             auth.signInWithEmailAndPassword(email,password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(getApplicationContext(),"Thành công",Toast.LENGTH_SHORT).show();
-                                finish();
-                                Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
-                                startActivity(i);
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(),"Sai email/mật khẩu. Hãy thử lại",Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
-                                return;
-                            }
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(),"Thành công",Toast.LENGTH_SHORT).show();
+                            finish();
+                            Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
+                            startActivity(i);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Sai email/mật khẩu. Hãy thử lại",Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                            return;
                         }
                     });
         }

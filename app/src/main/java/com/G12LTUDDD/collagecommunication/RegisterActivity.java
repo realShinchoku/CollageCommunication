@@ -7,13 +7,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.G12LTUDDD.collagecommunication.Models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -65,43 +61,37 @@ public class RegisterActivity extends AppCompatActivity {
             else {
 
                 auth.createUserWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()) {
-                                    FirebaseUser firebaseUser = auth.getCurrentUser();
+                        .addOnCompleteListener(task -> {
+                            if(task.isSuccessful()) {
+                                FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                                    User u = new User();
-                                    u.setUid(firebaseUser.getUid());
-                                    u.setEmail(email);
-                                    u.setName(username);
+                                User u = new User();
+                                u.setUid(firebaseUser.getUid());
+                                u.setEmail(email);
+                                u.setName(username);
 
-                                    db.collection("Users")
-                                            .document(u.getUid())
-                                            .set(u)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()) {
-                                                        Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
-                                                        progressBar.setVisibility(View.GONE);
-                                                        finish();
-                                                        Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
-                                                        startActivity(i);
-                                                    }
-                                                    else{
-                                                        Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
-                                                        progressBar.setVisibility(View.GONE);
-                                                        return;
-                                                    }
-                                                }
-                                            });
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(),"Email đã tồn tại",Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
-                                    return;
-                                }
+                                db.collection("Users")
+                                        .document(u.getUid())
+                                        .set(u)
+                                        .addOnCompleteListener(task1 -> {
+                                            if(task1.isSuccessful()) {
+                                                Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
+                                                progressBar.setVisibility(View.GONE);
+                                                finish();
+                                                Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
+                                                startActivity(i);
+                                            }
+                                            else{
+                                                Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
+                                                progressBar.setVisibility(View.GONE);
+                                                return;
+                                            }
+                                        });
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Email đã tồn tại",Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                return;
                             }
                         });
             }
