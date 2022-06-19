@@ -55,7 +55,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@+id/tvProfileGroupName"
-            android:background="48DDDCDC"
+            android:background="#48DDDCDC"
             android:src="@drawable/ic_baseline_edit_24" />
 
     </RelativeLayout>
