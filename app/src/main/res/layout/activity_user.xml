@@ -20,15 +20,19 @@
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
         <ImageButton
-            android:id="@+id/ibBackUser"
+            android:id="@+id/ibCancelUser"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:background="@drawable/btn_radius_background_blue"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_close_big_24" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <ImageButton
-            android:id="@+id/ibBackUser"
+            android:id="@+id/ibSaveUser"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -53,7 +57,7 @@
             android:layout_gravity="center">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ImgEditProfileUser"
+                android:id="@+id/civUser"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:padding="5dp"
@@ -62,11 +66,13 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/ImgEditProfileUser"
-                android:layout_alignBottom="@+id/ImgEditProfileUser"
-                android:layout_toRightOf="@+id/tvProfileUserName"
-                android:src="@drawable/ic_baseline_edit_black"
-                android:layout_margin="10dp"/>
+                android:layout_alignEnd="@+id/civUser"
+                android:layout_alignBottom="@+id/civUser"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_baseline_edit_black" />
         </RelativeLayout>
 
         <Space
@@ -146,15 +152,17 @@
                     android:padding="1dp"
                     android:src="@drawable/ic_baseline_account_circle_black" />
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserName"
+                <EditText
+                    android:id="@+id/etTen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
                     android:text="Họ và tên"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@null"
+                    android:editable="false"/>
             </LinearLayout>
 
             <ImageView
@@ -174,15 +182,17 @@
                     android:padding="1dp"
                     android:src="@drawable/ic_baseline_groups_24" />
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserClass"
+                <EditText
+                    android:id="@+id/etLop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
                     android:text="Lớp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@null"
+                    android:editable="false"/>
             </LinearLayout>
 
             <ImageView
@@ -202,15 +212,17 @@
                     android:padding="1dp"
                     android:src="@drawable/ic_baseline_assignment_ind_24" />
 
-                <TextView
-                    android:id="@+id/tvEditProfileUserMSV"
+                <EditText
+                    android:id="@+id/etMSV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
                     android:text="Mã sinh viên"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@null"
+                    android:editable="false"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -238,65 +250,25 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/color_radius_textview"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="15dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:padding="1dp"
-                    android:src="@drawable/ic_baseline_smartphone_24" />
-
-                <TextView
-                    android:id="@+id/tvEditProfileUserPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:text="Số điện thoại"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="1dp"
+                android:src="@drawable/ic_baseline_email_black_24" />
+
+            <TextView
+                android:id="@+id/tvEmailUser"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="50dp"
-                android:background="#C3C3C3" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:padding="1dp"
-                    android:src="@drawable/ic_baseline_email_black_24" />
-
-                <TextView
-                    android:id="@+id/tvEditProfileUserMail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:text="Email"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="50dp"
-                android:background="#C3C3C3" />
-
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="Email"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

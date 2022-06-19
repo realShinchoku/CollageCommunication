@@ -3,9 +3,64 @@ package com.G12LTUDDD.collagecommunication.Models;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    String uid="",name="", email="",img="";
+    String uid,name, email,img,ten,lop,msv;
 
-    public User() {}
+    public User() {
+        this.uid = "";
+        this.name = "";
+        this.email = "";
+        this.img = "";
+        this.ten = "";
+        this.lop = "";
+        this.msv = "";
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid='" + uid + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", img='" + img + '\'' +
+                ", ten='" + ten + '\'' +
+                ", lop='" + lop + '\'' +
+                ", msv='" + msv + '\'' +
+                '}';
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
+    public String getLop() {
+        return lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
+    }
+
+    public String getMsv() {
+        return msv;
+    }
+
+    public void setMsv(String msv) {
+        this.msv = msv;
+    }
+
+    public User(String uid, String name, String email, String img, String ten, String lop, String msv) {
+        this.uid = uid;
+        this.name = name;
+        this.email = email;
+        this.img = img;
+        this.ten = ten;
+        this.lop = lop;
+        this.msv = msv;
+    }
 
     public String getUid() {
         return uid;
@@ -39,13 +94,4 @@ public class User implements Serializable {
         this.img = img;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "uid='" + uid + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", img='" + img + '\'' +
-                '}';
-    }
 }
