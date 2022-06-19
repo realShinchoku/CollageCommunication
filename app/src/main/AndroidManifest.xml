@@ -10,12 +10,12 @@
         android:theme="@style/Theme.CollageCommunication.NoActionBar">
         <activity
             android:name=".test"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
         </activity>
         <activity
             android:name=".UserActivity"
@@ -34,12 +34,12 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-           <!-- <intent-filter>
+            android:exported="true">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <meta-data
