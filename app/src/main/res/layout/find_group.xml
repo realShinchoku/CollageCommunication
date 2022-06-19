@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/chatHeader"
+        android:id="@+id/findGroupHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -13,7 +13,7 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackNewGroup"
+            android:id="@+id/ibBackFindGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="5dp"
@@ -22,11 +22,11 @@
             android:background="@drawable/btn_radius_background_blue"/>
 
         <TextView
-            android:id="@+id/tvNewGroup"
+            android:id="@+id/tvFindGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:maxLines="1"
-            android:text="Nhóm mới"
+            android:text="Tìm nhóm"
             android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="20sp"
@@ -36,7 +36,7 @@
 
 
         <ImageButton
-            android:id="@+id/ibCreateNewGroup"
+            android:id="@+id/ibFindGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/btn_radius_background_blue"
@@ -46,47 +46,23 @@
 
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nhập tên nhóm"
-        android:fontFamily="@font/roboto"
-        android:textSize="16sp"
-        android:textColorHint="AFAFAF"
+        android:text="Nhập ID nhóm"
+        android:textStyle="bold"
+        android:textColor="#AFAFAF"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="null"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <SearchView
-        android:id="@+id/svNewGroupFindMember"
+        android:id="@+id/svFindGroupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/search" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gợi ý"
-            android:textStyle="bold"
-            android:textColor="#AFAFAF"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="5dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNewGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
 
 </LinearLayout>
