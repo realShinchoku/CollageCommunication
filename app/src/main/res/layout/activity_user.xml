@@ -12,13 +12,29 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackEditProfileUserHeader"
+            android:id="@+id/ibBackUser"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/btn_radius_background_blue"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+        <ImageButton
+            android:id="@+id/ibBackUser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_radius_background_blue"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_close_big_24" />
+        <ImageButton
+            android:id="@+id/ibBackUser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_radius_background_blue"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_check_24" />
 
     </LinearLayout>
 
@@ -49,7 +65,8 @@
                 android:layout_alignEnd="@+id/ImgEditProfileUser"
                 android:layout_alignBottom="@+id/ImgEditProfileUser"
                 android:layout_toRightOf="@+id/tvProfileUserName"
-                android:src="@drawable/ic_baseline_edit_black" />
+                android:src="@drawable/ic_baseline_edit_black"
+                android:layout_margin="10dp"/>
         </RelativeLayout>
 
         <Space

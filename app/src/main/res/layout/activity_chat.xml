@@ -8,7 +8,6 @@
     tools:context=".ChatActivity">
 
     <LinearLayout
-        android:id="@+id/chatHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -24,13 +23,13 @@
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
             android:background="@drawable/btn_radius_background_blue"/>
 
-        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:id="@+id/crcvChat"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_account_circle_24" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civImgGroup"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="7dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/com_facebook_profile_picture_blank_portrait"/>
 
         <TextView
             android:id="@+id/tvChat"
@@ -45,21 +44,12 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/ibCallChat"
+            android:id="@+id/ibDetailGroup"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/btn_radius_background_blue"
             android:padding="5dp"
             android:src="@drawable/ic_baseline_call_24"
-            android:backgroundTint="@android:color/transparent"/>
-
-        <ImageButton
-            android:id="@+id/ibVideoChat"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_radius_background_blue"
-            android:padding="5dp"
-            android:src="@drawable/ic_baseline_videocam_24"
             android:backgroundTint="@android:color/transparent"/>
 
 

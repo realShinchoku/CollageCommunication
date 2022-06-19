@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,9 +22,11 @@ import com.G12LTUDDD.collagecommunication.Models.User;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,6 +34,7 @@ import java.util.List;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class GroupChatActivity extends AppCompatActivity {
 
@@ -40,6 +47,7 @@ public class GroupChatActivity extends AppCompatActivity {
     SearchView svGroup;
     ImageButton ibMenu;
     CircleImageView civUser;
+    FloatingActionButton fabJoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,7 @@ public class GroupChatActivity extends AppCompatActivity {
         svGroup = (SearchView) findViewById(R.id.svGroup);
         ibMenu = (ImageButton) findViewById(R.id.ibGroupMenu);
         civUser = (CircleImageView) findViewById(R.id.civUserGroup);
+        fabJoin = (FloatingActionButton)  findViewById(R.id.fabJoin);
 
         final FirebaseUser curUser = auth.getCurrentUser();
         u.setUid(curUser.getUid());
@@ -141,6 +150,36 @@ public class GroupChatActivity extends AppCompatActivity {
             }
 
         });
+
+        fabJoin.attachToRecyclerView(rvGroup);
+        fabJoin.setOnClickListener(v -> {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(GroupChatActivity.this);
+            alertDialog.setTitle("Tham Gia Nhóm");
+            alertDialog.setMessage("Nhập mã nhóm");
+
+            final EditText input = new EditText(GroupChatActivity.this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT);
+            input.setLayoutParams(lp);
+            alertDialog.setView(input);
+
+            alertDialog.setPositiveButton("Tham gia", (dialog, which) -> {
+                    String gid = input.getText().toString().toUpperCase();
+                    db.collection("Groups").document(gid).get().addOnCompleteListener(task -> {
+                        if(task.getResult().exists()){
+
+                            db.collection("Groups").document(gid).update("users", FieldValue.arrayUnion(u.getUid()));
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Không tìm thấy nhóm có mã "+gid,Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                });
+
+            alertDialog.setNegativeButton("Hủy", (dialog, which) -> dialog.cancel());
+            alertDialog.show();
+        });
     }
 
 
@@ -161,9 +200,6 @@ public class GroupChatActivity extends AppCompatActivity {
                     auth.signOut();
                     finish();
                     startActivity(new Intent(GroupChatActivity.this, MainActivity.class));
-            }
-            else if(item.getItemId() == R.id.menuFind){
-
             }
             else if (item.getItemId() == R.id.menuAdd) {
                 Group group = new Group();

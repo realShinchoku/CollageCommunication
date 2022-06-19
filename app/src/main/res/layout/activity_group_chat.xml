@@ -1,81 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
     tools:context=".GroupChatActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/com_smart_login_code"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civUserGroup"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_baseline_account_circle_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/roboto"
-            android:text="Tin nhắn"
-            android:textColor="#ffff"
-            android:textSize="22sp"
-            android:layout_marginTop="10dp"
-            android:padding="6dp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textAlignment="center"/>
-
-        <ImageButton
-            android:id="@+id/ibGroupMenu"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:padding="6dp"
             android:background="@color/com_smart_login_code"
-            android:src="@drawable/ic_baseline_more_horiz_24"/>
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civUserGroup"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_account_circle_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:padding="6dp"
+                android:text="Tin nhắn"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/ibGroupMenu"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:background="@color/com_smart_login_code"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_more_horiz_24" />
+
+        </LinearLayout>
 
 
-    <SearchView
-        android:id="@+id/svGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/search" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_weight="1"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:layout_width="wrap_content"
+        <SearchView
+            android:id="@+id/svGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/ic_baseline_add_circle_24" />
+            android:layout_margin="5dp"
+            android:background="@drawable/search" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp" />
     </LinearLayout>
 
-</LinearLayout>
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fabJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_baseline_add_circle_24"
+        app:fab_colorNormal="@color/white"
+        app:fab_colorRipple="@color/white"
+        app:fab_colorPressed="@color/white"
+        android:layout_margin="16dp"
+        app:fab_shadow="false" />
+</FrameLayout>

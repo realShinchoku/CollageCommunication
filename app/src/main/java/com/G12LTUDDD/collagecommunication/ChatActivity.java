@@ -25,9 +25,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -40,8 +43,9 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView rvMessage;
 
     EditText etInput;
-    ImageButton ibSend, ibBack, ibCall, ibVideo;
+    ImageButton ibSend, ibBack, ibDetail;
     TextView tvGroupName;
+    CircleImageView civImgGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,9 @@ public class ChatActivity extends AppCompatActivity {
         ibSend = findViewById(R.id.ibSendChat);
         ibBack = findViewById(R.id.ibBackChat);
         tvGroupName = findViewById(R.id.tvChat);
+        civImgGroup = findViewById(R.id.civImgGroup);
+        if(!group.getImg().equals(""))
+            Picasso.get().load(group.getImg()).into(civImgGroup);
         tvGroupName.setText(group.getName());
 
         final FirebaseUser curUser = auth.getCurrentUser();
