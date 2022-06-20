@@ -69,12 +69,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/civUser"
                 android:layout_alignBottom="@+id/civUser"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_margin="7dp"
                 android:background="#00ff0000"
-                android:src="@drawable/ic_baseline_edit_black" />
+                android:src="@drawable/ic_baseline_camera_alt_24" />
         </RelativeLayout>
 
         <Space
@@ -94,19 +91,18 @@
 
         <EditText
             android:id="@+id/etName"
-            android:inputType="text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@null"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
             android:fontFamily="@font/roboto"
             android:gravity="center"
+            android:inputType="text"
             android:text="Tên người dùng"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="34dp"
+            android:editable="true"/>
 
         <ImageButton
             android:id="@+id/ibName"
@@ -157,6 +153,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/color_radius_textview"
@@ -182,12 +179,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
+                    android:textStyle="normal"
                     android:text="Họ và tên"
                     android:textSize="16sp"
                     android:background="@null"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
+                    android:editable="true"/>
             </LinearLayout>
 
             <ImageView
@@ -218,9 +214,8 @@
                     android:text="Lớp"
                     android:textSize="16sp"
                     android:background="@null"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
+                    android:editable="true"
+                    android:textStyle="normal"/>
             </LinearLayout>
 
             <ImageView
@@ -251,9 +246,8 @@
                     android:text="Mã sinh viên"
                     android:textSize="16sp"
                     android:background="@null"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"/>
+                    android:editable="true"
+                    android:textStyle="normal"/>
             </LinearLayout>
 
         </LinearLayout>

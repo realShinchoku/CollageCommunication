@@ -1,6 +1,8 @@
 package com.G12LTUDDD.collagecommunication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.G12LTUDDD.collagecommunication.Models.Message;
+import com.G12LTUDDD.collagecommunication.Models.User;
 import com.G12LTUDDD.collagecommunication.R;
+import com.G12LTUDDD.collagecommunication.UserActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -71,13 +75,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
             });
         }
         else {
-            db.collection("Users")
-                    .document(message.getUid())
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful())
-                            if (!task.getResult().get("img").equals(""))
-                                Picasso.get().load(task.getResult().get("img").toString()).into(holder.civImg);
+            db.collection("Users").document(message.getUid())
+                    .addSnapshotListener((value, error) -> {
+                        if (error != null) {
+                            Log.w("TAG", "Listen failed.", error);
+                            return;
+                        }
+                        if(value.exists()) {
+                            User u = value.toObject(User.class);
+                            if(!u.getImg().equals(""))
+                                Picasso.get().load(u.getImg()).into(holder.civImg);
+                            holder.civImg.setOnClickListener(v -> {
+                                Intent i = new Intent(context, UserActivity.class);
+                                i.putExtra("user", u);
+                                context.startActivity(i);
+                            });
+                        }
                     });
             holder.civImg.setVisibility(View.VISIBLE);
             holder.tvValue.setBackgroundResource(R.drawable.opo_msg_back);
@@ -90,6 +103,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
                     holder.tvTime.setVisibility(View.GONE);
                 }
             });
+
         }
     }
 

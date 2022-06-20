@@ -1,29 +1,28 @@
 package com.G12LTUDDD.collagecommunication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.G12LTUDDD.collagecommunication.Models.User;
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-
-import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -58,7 +57,8 @@ public class UserActivity extends AppCompatActivity {
         etTen = (EditText) findViewById(R.id.etTen);
         etLop = (EditText) findViewById(R.id.etLop);
         etMsv = (EditText) findViewById(R.id.etMsv);
-        setEt();
+
+        KeyListener variable = etName.getKeyListener();
 
         tvEmail = (TextView) findViewById(R.id.tvEmailUser);
         tvEmail.setText(u.getEmail());
@@ -69,8 +69,8 @@ public class UserActivity extends AppCompatActivity {
         ibBack = (ImageButton) findViewById(R.id.ibBackUser);
         ibCancel = (ImageButton) findViewById(R.id.ibCancelUser);
         ibSave = (ImageButton) findViewById(R.id.ibSaveUser);
-        HideSaveAndCancel();
 
+        HideSaveAndCancel();
         final FirebaseUser curUser = auth.getCurrentUser();
         if(!u.getUid().equals(curUser.getUid())){
             ibImg.setVisibility(View.GONE);
@@ -88,41 +88,40 @@ public class UserActivity extends AppCompatActivity {
                         u = value.toObject(User.class);
                         if(!u.getImg().equals(""))
                             Picasso.get().load(u.getImg()).into(civUser);
+                        setEt();
                     }
                 });
 
         ibName.setOnClickListener(v -> {
-            ShowSaveAndCancel();
-            etName.setClickable(true);
-            etName.setFocusable(true);
-            etName.setFocusableInTouchMode(true);
+            etName.setKeyListener(variable);
             etName.requestFocus();
-
+            ShowSaveAndCancel();
         });
         ibInfo.setOnClickListener(v ->{
-            etTen.setClickable(true);
-            etTen.setFocusable(true);
-            etTen.setFocusableInTouchMode(true);
-            etLop.setClickable(true);
-            etLop.setFocusable(true);
-            etLop.setFocusableInTouchMode(true);
-            etMsv.setClickable(true);
-            etMsv.setFocusable(true);
-            etMsv.setFocusableInTouchMode(true);
+            etTen.setKeyListener(variable);
+            etLop.setKeyListener(variable);
+            etMsv.setKeyListener(variable);
             etTen.requestFocus();
             ShowSaveAndCancel();
-
-
         });
         ibCancel.setOnClickListener(v ->{
             HideSaveAndCancel();
             setEt();
+            hideKeyBroad(v);
         });
-
+        ibSave.setOnClickListener(v -> {
+            db.collection("Users").document(u.getUid())
+                            .update("name",etName.getText().toString(),"ten",etTen.getText().toString(),"lop",etLop.getText().toString(),"msv",etMsv.getText().toString());
+            HideSaveAndCancel();
+            hideKeyBroad(v);
+        });
         ibImg.setOnClickListener(v -> {
             ImagePicker.with(this)
                     .crop()
                     .start();
+        });
+        ibBack.setOnClickListener(v ->{
+            finish();
         });
     }
 
@@ -131,7 +130,8 @@ public class UserActivity extends AppCompatActivity {
         ibCancel.setVisibility(View.VISIBLE);
         ibBack.setVisibility(View.GONE);
         ibInfo.setVisibility(View.GONE);
-        ibName.setVisibility(View.GONE);
+        ibName.setVisibility(View.INVISIBLE);
+        ibImg.setVisibility(View.GONE);
     }
 
     void HideSaveAndCancel(){
@@ -140,18 +140,16 @@ public class UserActivity extends AppCompatActivity {
         ibBack.setVisibility(View.VISIBLE);
         ibInfo.setVisibility(View.VISIBLE);
         ibName.setVisibility(View.VISIBLE);
-        etTen.setClickable(false);
-        etTen.setFocusable(false);
-        etTen.setFocusableInTouchMode(false);
-        etLop.setClickable(false);
-        etLop.setFocusable(false);
-        etLop.setFocusableInTouchMode(false);
-        etMsv.setClickable(false);
-        etMsv.setFocusable(false);
-        etMsv.setFocusableInTouchMode(false);
-        etName.setClickable(false);
-        etName.setFocusable(false);
-        etName.setFocusableInTouchMode(false);
+        ibImg.setVisibility(View.VISIBLE);
+
+        etName.setKeyListener(null);
+        etName.clearFocus();
+        etTen.setKeyListener(null);
+        etTen.clearFocus();
+        etLop.setKeyListener(null);
+        etLop.clearFocus();
+        etMsv.setKeyListener(null);
+        etMsv.clearFocus();
     }
 
     void setEt(){
@@ -161,6 +159,7 @@ public class UserActivity extends AppCompatActivity {
         etMsv.setText(u.getMsv());
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -189,5 +188,10 @@ public class UserActivity extends AppCompatActivity {
                         });
             }
         }
+    }
+
+    void hideKeyBroad(View v){
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 }
