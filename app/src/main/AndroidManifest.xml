@@ -8,7 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CollageCommunication.NoActionBar">
-       <!-- <activity
+        <activity
+            android:name=".GroupDetailActivity"
+            android:exported="false" />
+        <!--
+         <activity
             android:name=".test"
             android:exported="true">
         <intent-filter>
@@ -16,7 +20,8 @@
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-        </activity>-->
+        </activity>
+        -->
         <activity
             android:name=".UserActivity"
             android:exported="false" />

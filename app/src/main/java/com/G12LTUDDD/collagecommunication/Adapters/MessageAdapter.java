@@ -61,8 +61,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
         }
         else{
             holder.tvValue.setVisibility(View.GONE);
-            Picasso.get().load(message.getValue()).into(holder.ivValue);
-            holder.ivValue.setVisibility(View.VISIBLE);
+            if(!message.getValue().equals("")) {
+                Picasso.get().load(message.getValue()).into(holder.ivValue);
+                holder.ivValue.setVisibility(View.VISIBLE);
+            }
         }
 
         if (message.getUid().equals(uid)) {
@@ -71,6 +73,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
             holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
             holder.tvValue.setOnClickListener(v -> {
+                if (holder.tvTime.getVisibility() == View.GONE) {
+                    holder.tvTime.setVisibility(View.VISIBLE);
+                    holder.ibDelete.setVisibility(View.VISIBLE);
+                } else {
+                    holder.tvTime.setVisibility(View.GONE);
+                    holder.ibDelete.setVisibility(View.GONE);
+                }
+            });
+            holder.ivValue.setOnClickListener(v -> {
                 if (holder.tvTime.getVisibility() == View.GONE) {
                     holder.tvTime.setVisibility(View.VISIBLE);
                     holder.ibDelete.setVisibility(View.VISIBLE);
@@ -104,6 +115,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
             holder.ll.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
 
             holder.tvValue.setOnClickListener(v -> {
+                if (holder.tvTime.getVisibility() == View.GONE) {
+                    holder.tvTime.setVisibility(View.VISIBLE);
+                } else {
+                    holder.tvTime.setVisibility(View.GONE);
+                }
+            });
+
+            holder.ivValue.setOnClickListener(v -> {
                 if (holder.tvTime.getVisibility() == View.GONE) {
                     holder.tvTime.setVisibility(View.VISIBLE);
                 } else {

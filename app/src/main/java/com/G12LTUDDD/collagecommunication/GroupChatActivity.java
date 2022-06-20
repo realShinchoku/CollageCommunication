@@ -158,6 +158,7 @@ public class GroupChatActivity extends AppCompatActivity {
             alertDialog.setMessage("Nhập mã nhóm");
 
             final EditText input = new EditText(GroupChatActivity.this);
+
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT);
@@ -204,7 +205,7 @@ public class GroupChatActivity extends AppCompatActivity {
             else if (item.getItemId() == R.id.menuAdd) {
                 Group group = new Group();
                 group.setName("Nhóm của bạn");
-                List<String> users = new ArrayList<String>();
+                List<String> users = new ArrayList<>();
                 users.add(u.getUid());
                 group.setUsers(users);
                 group.setAdmins(users);
