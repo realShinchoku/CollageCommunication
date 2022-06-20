@@ -48,7 +48,7 @@ public class test extends AppCompatActivity {
         // create an instance of the
         // intent of the type image
         ImagePicker.with(this)
-                .crop()                    //Crop image(Optional), Check Customization for more option
+                .crop()
                 .start();
     }
 

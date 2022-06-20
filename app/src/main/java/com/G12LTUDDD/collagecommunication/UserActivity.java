@@ -1,28 +1,37 @@
 package com.G12LTUDDD.collagecommunication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.G12LTUDDD.collagecommunication.Models.User;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.UUID;
+
 import de.hdodenhof.circleimageview.CircleImageView;
-import lv.chi.photopicker.ChiliPhotoPicker;
 
 public class UserActivity extends AppCompatActivity {
     User u;
     FirebaseAuth auth;
     FirebaseFirestore db;
+    StorageReference reference;
 
     CircleImageView civUser;
     ImageButton ibImg,ibName,ibInfo,ibBack,ibCancel,ibSave;
@@ -41,6 +50,7 @@ public class UserActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        reference = FirebaseStorage.getInstance().getReference().child("img/users/"+u.getUid());
 
         civUser = (CircleImageView) findViewById(R.id.civUser);
 
@@ -110,13 +120,9 @@ public class UserActivity extends AppCompatActivity {
         });
 
         ibImg.setOnClickListener(v -> {
-            Picasso.with(context)
-                    .load(uri)
-                    .placeholder(R.drawable.bg_placeholder)
-                    .fit()
-                    .centerCrop()
-                    .into(view)
-                    
+            ImagePicker.with(this)
+                    .crop()
+                    .start();
         });
     }
 
@@ -153,5 +159,35 @@ public class UserActivity extends AppCompatActivity {
         etLop.setText(u.getLop());
         etTen.setText(u.getTen());
         etMsv.setText(u.getMsv());
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            // Get the url of the image from data
+            Uri selectedImageUri = data.getData();
+            if (null != selectedImageUri) {
+                // update the preview image in the layout
+                ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setTitle("Tải ảnh lên");
+                progressDialog.show();
+                reference.putFile(selectedImageUri)
+                        .addOnProgressListener(snapshot -> {
+                            double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                            progressDialog.setMessage("Đã tải " + (int) progress + "%");
+                        })
+                        .addOnCompleteListener(taskSnapshot -> {
+                            reference.getDownloadUrl()
+                                    .addOnSuccessListener(uri -> {
+                                        db.collection("Users").document(u.getUid()).update("img",uri.toString());
+                                    });
+                            progressDialog.dismiss();
+                        });
+            }
+        }
     }
 }
