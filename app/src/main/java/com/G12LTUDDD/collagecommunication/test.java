@@ -1,15 +1,22 @@
 package com.G12LTUDDD.collagecommunication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
@@ -44,12 +51,9 @@ public class test extends AppCompatActivity {
 
         // create an instance of the
         // intent of the type image
-        Intent i = new Intent();
-        i.setType("image/video/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-        
-        // pass the constant to compare it
-         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+        ImagePicker.with(this)
+                .crop()	    			//Crop image(Optional), Check Customization for more option
+                .start();
     }
 
 
@@ -62,18 +66,33 @@ public class test extends AppCompatActivity {
 
             // compare the resultCode with the
             // SELECT_PICTURE constant
-            if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
+                    ProgressDialog progressDialog
+                            = new ProgressDialog(this);
+                    progressDialog.setTitle("Uploading...");
+                    progressDialog.show();
                     FirebaseStorage storage;
                     storage = FirebaseStorage.getInstance();
                     String s =  UUID.randomUUID().toString();
-                    storage.getReference().child("img/abc").putFile(selectedImageUri);
+                    storage.getReference().child("img/abc").putFile(selectedImageUri)
+                            .addOnProgressListener(snapshot -> {
+                                double progress
+                                        = (100.0
+                                        * snapshot.getBytesTransferred()
+                                        / snapshot.getTotalByteCount());
+                                progressDialog.setMessage(
+                                        "Uploaded "
+                                                + (int)progress + "%");
+                            })
+                            .addOnSuccessListener(taskSnapshot -> {
+                                progressDialog.dismiss();
+                                Toast.makeText(test.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
+                            });
                     IVPreviewImage.setImageURI(selectedImageUri);
                     textView.setText(s);
-                }
             }
         }
     }
