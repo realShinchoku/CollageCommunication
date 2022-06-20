@@ -57,7 +57,6 @@
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_group_chat.xml" value="0.3625" />
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_login.xml" value="0.3625" />
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_register.xml" value="0.3625" />
-        <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_test.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/activity_user.xml" value="0.3625" />
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/edit_profile_user.xml" value="0.2798913043478261" />
         <entry key="..\:/Users/xinday/StudioProjects/CollageCommunication/app/src/main/res/layout/profile_user.xml" value="0.3625" />
@@ -75,6 +74,7 @@
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_assignment_ind_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.3835" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_circle_notifications_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.3835" />
@@ -87,6 +87,7 @@
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_email_black_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_groups_24.xml" value="0.3835" />
+        <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.3835" />
         <entry key="..\:/WorkSpace/Android/CollgeCommunication/app/src/main/res/drawable/ic_baseline_password_24.xml" value="0.3835" />

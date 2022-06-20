@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -49,9 +50,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     public void onBindViewHolder(@NonNull MessageAdapterViewHolder holder, int position) {
         Message message = messages.get(position);
 
-        holder.tvValue.setText(message.getValue());
+
         String time = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(message.getTime());
         holder.tvTime.setText(time);
+
+        if(message.getType().equals("text")){
+            holder.ivValue.setVisibility(View.GONE);
+            holder.tvValue.setText(message.getValue());
+            holder.tvValue.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.tvValue.setVisibility(View.GONE);
+            Picasso.get().load(message.getValue()).into(holder.ivValue);
+            holder.ivValue.setVisibility(View.VISIBLE);
+        }
 
         if (message.getUid().equals(uid)) {
             holder.civImg.setVisibility(View.GONE);
@@ -67,12 +79,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
                     holder.ibDelete.setVisibility(View.GONE);
                 }
             });
-            holder.ibDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.collection("Messages").document(message.getKey()).delete();
-                }
-            });
+            holder.ibDelete.setOnClickListener(v -> db.collection("Messages").document(message.getKey()).delete());
         }
         else {
             db.collection("Users").document(message.getUid())
@@ -117,6 +124,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
         public TextView tvValue, tvTime;
         public ImageButton ibDelete;
         public LinearLayout ll;
+        public ImageView ivValue;
 
         public MessageAdapterViewHolder(View itemView) {
             super(itemView);
@@ -124,6 +132,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
             tvValue = itemView.findViewById(R.id.tvValueChatItem);
             tvTime = itemView.findViewById(R.id.tvTimeChatItem);
             ibDelete = itemView.findViewById(R.id.ibChatItem);
+            ivValue = itemView.findViewById(R.id.ivValueChatItem);
             ll = itemView.findViewById(R.id.llChatItem);
         }
     }

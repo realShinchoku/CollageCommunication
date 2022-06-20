@@ -66,6 +66,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/ibSendImg"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_image_24"
+            android:backgroundTint="@android:color/transparent"/>
+
         <EditText
             android:id="@+id/etChat"
             android:layout_width="wrap_content"
