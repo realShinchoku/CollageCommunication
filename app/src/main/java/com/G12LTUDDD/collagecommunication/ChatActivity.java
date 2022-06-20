@@ -72,9 +72,11 @@ public class ChatActivity extends AppCompatActivity {
         etInput = findViewById(R.id.etChat);
         ibSend = findViewById(R.id.ibSendChat);
         ibBack = findViewById(R.id.ibBackChat);
+        ibDetail =findViewById(R.id.ibDetailGroup);
         ibSendImg = findViewById(R.id.ibSendImg);
         tvGroupName = findViewById(R.id.tvChat);
         civImgGroup = findViewById(R.id.civImgGroup);
+        
         if(!group.getImg().equals(""))
             Picasso.get().load(group.getImg()).into(civImgGroup);
         tvGroupName.setText(group.getName());
