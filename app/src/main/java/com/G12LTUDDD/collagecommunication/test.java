@@ -9,14 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
@@ -52,7 +48,7 @@ public class test extends AppCompatActivity {
         // create an instance of the
         // intent of the type image
         ImagePicker.with(this)
-                .crop()	    			//Crop image(Optional), Check Customization for more option
+                .crop()                    //Crop image(Optional), Check Customization for more option
                 .start();
     }
 
@@ -66,33 +62,33 @@ public class test extends AppCompatActivity {
 
             // compare the resultCode with the
             // SELECT_PICTURE constant
-                // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    // update the preview image in the layout
-                    ProgressDialog progressDialog
-                            = new ProgressDialog(this);
-                    progressDialog.setTitle("Uploading...");
-                    progressDialog.show();
-                    FirebaseStorage storage;
-                    storage = FirebaseStorage.getInstance();
-                    String s =  UUID.randomUUID().toString();
-                    storage.getReference().child("img/abc").putFile(selectedImageUri)
-                            .addOnProgressListener(snapshot -> {
-                                double progress
-                                        = (100.0
-                                        * snapshot.getBytesTransferred()
-                                        / snapshot.getTotalByteCount());
-                                progressDialog.setMessage(
-                                        "Uploaded "
-                                                + (int)progress + "%");
-                            })
-                            .addOnSuccessListener(taskSnapshot -> {
-                                progressDialog.dismiss();
-                                Toast.makeText(test.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
-                            });
-                    IVPreviewImage.setImageURI(selectedImageUri);
-                    textView.setText(s);
+            // Get the url of the image from data
+            Uri selectedImageUri = data.getData();
+            if (null != selectedImageUri) {
+                // update the preview image in the layout
+                ProgressDialog progressDialog
+                        = new ProgressDialog(this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
+                FirebaseStorage storage;
+                storage = FirebaseStorage.getInstance();
+                String s = UUID.randomUUID().toString();
+                storage.getReference().child("img/abc").putFile(selectedImageUri)
+                        .addOnProgressListener(snapshot -> {
+                            double progress
+                                    = (100.0
+                                    * snapshot.getBytesTransferred()
+                                    / snapshot.getTotalByteCount());
+                            progressDialog.setMessage(
+                                    "Uploaded "
+                                            + (int) progress + "%");
+                        })
+                        .addOnSuccessListener(taskSnapshot -> {
+                            progressDialog.dismiss();
+                            Toast.makeText(test.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
+                        });
+                IVPreviewImage.setImageURI(selectedImageUri);
+                textView.setText(s);
             }
         }
     }
