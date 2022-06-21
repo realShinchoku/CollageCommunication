@@ -45,7 +45,7 @@ public class ChatActivity extends AppCompatActivity {
 
     EditText etInput;
     ImageButton ibSend, ibBack, ibDetail,ibSendImg;
-    TextView tvGroupName;
+    TextView tvGroupName,tvGroupId;
     CircleImageView civImgGroup;
 
     @Override
@@ -76,10 +76,12 @@ public class ChatActivity extends AppCompatActivity {
         ibSendImg = findViewById(R.id.ibSendImg);
         tvGroupName = findViewById(R.id.tvChat);
         civImgGroup = findViewById(R.id.civImgGroup);
+        tvGroupId = findViewById(R.id.tvGroupId);
         
         if(!group.getImg().equals(""))
             Picasso.get().load(group.getImg()).into(civImgGroup);
         tvGroupName.setText(group.getName());
+        tvGroupId.setText(group.getGid());
 
         final FirebaseUser curUser = auth.getCurrentUser();
         u.setUid(curUser.getUid());
@@ -87,13 +89,24 @@ public class ChatActivity extends AppCompatActivity {
 
 
         db.collection("Users").document(u.getUid())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        u = task.getResult().toObject(User.class);
+                    }
+                });
+
+        db.collection("Groups").document(group.getGid())
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
-                        u = value.toObject(User.class);
+                    if(!value.exists()) {
+                        group = value.toObject(Group.class);
+                        if(!group.getUsers().contains(u.getUid())){
+                            finish();
+                        }
                     }
                 });
 

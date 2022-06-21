@@ -31,18 +31,34 @@
             android:layout_marginLeft="10dp"
             android:src="@drawable/com_facebook_profile_picture_blank_portrait"/>
 
-        <TextView
-            android:id="@+id/tvChat"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="Group name"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="5dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tvChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Group name"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <TextView
+                android:id="@+id/tvGroupId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:text="Invite Code"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:paddingStart="5dp"/>
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/ibDetailGroup"
             android:layout_width="wrap_content"

@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ProfileGroupHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/com_smart_login_code"
@@ -15,61 +14,112 @@
         android:padding="5dp">
 
         <ImageButton
-            android:id="@+id/ibBackGroupHeader"
+            android:id="@+id/ibBackDetail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:background="@drawable/btn_radius_background_blue"
             android:padding="5dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+        <ImageButton
+            android:id="@+id/ibCancelDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_radius_background_blue"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_close_big_24" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:id="@+id/ibSaveDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_radius_background_blue"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_check_24" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ImgProfileGroup"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:padding="5dp"
-        android:src="@drawable/ic_baseline_account_circle_black"
-        android:layout_gravity="center"/>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvProfileGroupName"
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civDetail"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_account_circle_black_120dp" />
+
+            <ImageButton
+                android:id="@+id/ibImgDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/civDetail"
+                android:layout_alignBottom="@+id/civDetail"
+                android:layout_margin="7dp"
+                android:background="#00ff0000"
+                android:src="@drawable/ic_baseline_camera_alt_24" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/etDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
             android:fontFamily="@font/roboto"
             android:gravity="center"
+            android:inputType="text"
             android:text="Tên nhóm"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="34dp"
+            android:editable="true"/>
 
         <ImageButton
-            android:id="@+id/ibProfileGroupEditNickName"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_centerVertical="true"
+            android:id="@+id/ibDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/tvProfileGroupName"
-            android:background="#48DDDCDC"
-            android:src="@drawable/ic_baseline_edit_24" />
+            android:src="@drawable/ic_baseline_edit_black"
+            android:background="#00ff0000"/>
 
-    </RelativeLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/tvProfileGroupEditImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đổi ảnh"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:textColor="@color/com_smart_login_code"
-        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,37 +142,12 @@
             android:background="@drawable/color_radius_textview"
             android:orientation="vertical"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="30dp"
+            android:padding="15dp">
+
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_baseline_circle_notifications_24"/>
-
-                <TextView
-                    android:id="@+id/tvProfileGroupNotice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Thông báo"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#C3C3C3"
-                android:layout_marginLeft="50dp"/>
-
-            <LinearLayout
+                android:id="@+id/lltroupUsersList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -134,7 +159,6 @@
                     android:src="@drawable/ic_baseline_groups_24"/>
 
                 <TextView
-                    android:id="@+id/tvProfileGroupSeeMember"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Xem thành viên"
@@ -151,6 +175,7 @@
                 android:layout_marginLeft="50dp"/>
 
             <LinearLayout
+                android:id="@+id/llGroupUsersAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -162,7 +187,6 @@
                     android:src="@drawable/ic_baseline_person_add_24"/>
 
                 <TextView
-                    android:id="@+id/tvProfileGroupAddMember"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thêm thành viên"
@@ -197,37 +221,11 @@
             android:background="@drawable/color_radius_textview"
             android:orientation="vertical"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="30dp"
+            android:padding="15dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_baseline_warning_24"/>
-
-                <TextView
-                    android:id="@+id/tvProfileGroupReport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Báo cáo"
-                    android:textSize="16sp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="10dp"/>
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#C3C3C3"
-                android:layout_marginLeft="50dp"/>
-
-            <LinearLayout
+                android:id="@+id/llGroupLeave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -239,7 +237,6 @@
                     android:src="@drawable/ic_baseline_logout_24"/>
 
                 <TextView
-                    android:id="@+id/tvProfileGroupOutGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rời khỏi nhóm"
