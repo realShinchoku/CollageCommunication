@@ -33,7 +33,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/round_back_light_10"
-            android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
+            android:drawableStart="@drawable/ic_baseline_perm_identity_24"
             android:drawablePadding="15dp"
             android:fontFamily="@font/roboto"
             android:hint="Email"
@@ -46,13 +46,12 @@
             android:id="@+id/txtLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLoginEmail"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_back_light_10"
-            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawableStart="@drawable/ic_baseline_remove_red_eye_24"
             android:drawablePadding="15dp"
             android:fontFamily="@font/roboto"
             android:hint="Password"
@@ -65,7 +64,6 @@
             android:id="@+id/btnLoginSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLoginPassword"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -78,13 +76,13 @@
 
     <TextView
         android:id="@+id/lblLoginForgotPassword"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLoginSignin"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto"
         android:gravity="center"
+        android:layout_gravity="center"
         android:onClick="gotoForgotPassword"
         android:text="Forgot Password?"
         android:textColor="#fff"
@@ -92,9 +90,9 @@
 
         <TextView
             android:id="@+id/lblLoginRegister"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lblLoginForgotPassword"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
             android:gravity="center"
@@ -102,23 +100,28 @@
             android:textColor="#fff"
             android:textSize="16sp"
             android:onClick="gotoRegister"/>
-
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/llosociallinkLoginlink"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:text="Or sign in with"
+        android:layout_gravity="center"
         android:textColor="#fff"
         android:textSize="16sp" />
 
         <LinearLayout
             android:id="@+id/llosociallinkLoginlink"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -136,7 +139,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"/>
-
         </LinearLayout>
 
         <ProgressBar
