@@ -1,6 +1,7 @@
 package com.G12LTUDDD.collagecommunication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.G12LTUDDD.collagecommunication.Models.Group;
 import com.G12LTUDDD.collagecommunication.Models.User;
 import com.G12LTUDDD.collagecommunication.R;
+import com.G12LTUDDD.collagecommunication.UserActivity;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -64,6 +66,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
                     if(!u.getImg().equals(""))
                         Picasso.get().load(u.getImg()).into(holder.civImg);
                     holder.tvName.setText(u.getName());
+                    holder.tvName.setOnClickListener(v -> {
+                        Intent i = new Intent(context, UserActivity.class);
+                        i.putExtra("user", u);
+                        context.startActivity(i);
+                    });
+
+                    holder.civImg.setOnClickListener(v -> {
+                        Intent i = new Intent(context, UserActivity.class);
+                        i.putExtra("user", u);
+                        context.startActivity(i);
+                    });
                 }
             });
     }
@@ -78,12 +91,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
 
         public CircleImageView civImg;
         public TextView tvName;
-        public ImageButton ibMenu;
+        public ImageButton ibMenu,ibAdd;
+
         public UserAdapterViewHolder(View itemView){
             super(itemView);
             civImg = itemView.findViewById(R.id.civUserItem);
             tvName = itemView.findViewById(R.id.tvUserItem);
-            ibMenu = itemView.findViewById(R.id.ibUserItem);
+            ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
+            ibAdd = itemView.findViewById(R.id.ibAddUserItem);
+            ibAdd.setVisibility(View.GONE);
         }
     }
 

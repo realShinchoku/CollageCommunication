@@ -133,7 +133,7 @@ public class GroupChatActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.length()>0)
+                if(newText.length()>2)
                 {
                     List<Group> searchGroup = new ArrayList<>();
                     for(Group g:groups){

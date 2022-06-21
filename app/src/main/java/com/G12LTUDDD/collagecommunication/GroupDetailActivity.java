@@ -67,7 +67,8 @@ public class GroupDetailActivity extends AppCompatActivity {
         ibSave = (ImageButton) findViewById(R.id.ibSaveDetail);
 
         llLeave = (LinearLayout) findViewById(R.id.llGroupLeave);
-        llList = (LinearLayout) findViewById(R.id.lltroupUsersList);
+        llList = (LinearLayout) findViewById(R.id.lltGroupUsersList);
+        llAdd = (LinearLayout) findViewById(R.id.llGroupUsersAdd);
 
         HideSaveAndCancel();
         final FirebaseUser curUser = auth.getCurrentUser();
@@ -128,9 +129,9 @@ public class GroupDetailActivity extends AppCompatActivity {
             startActivity(new Intent(GroupDetailActivity.this,GroupChatActivity.class));
         });
 
-        llList.setOnClickListener(v -> {
-            startActivity(new Intent(GroupDetailActivity.this,UsersListActivity.class).putExtra("group",group));
-        });
+        llList.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this,UsersListActivity.class).putExtra("group",group)));
+
+        llAdd.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this,UserAddActivity.class).putExtra("group",group)));
     }
 
     void ShowSaveAndCancel(){

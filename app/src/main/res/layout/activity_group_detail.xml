@@ -147,9 +147,10 @@
 
 
             <LinearLayout
-                android:id="@+id/lltroupUsersList"
+                android:id="@+id/lltGroupUsersList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -172,12 +173,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#C3C3C3"
-                android:layout_marginLeft="50dp"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"/>
 
             <LinearLayout
                 android:id="@+id/llGroupUsersAdd"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"

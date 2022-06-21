@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollageCommunication.NoActionBar">
         <activity
+            android:name=".UserAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".UsersListActivity"
             android:exported="false" />
         <activity
