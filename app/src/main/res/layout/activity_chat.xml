@@ -84,7 +84,7 @@
 
         <ImageButton
             android:id="@+id/ibSendImg"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_baseline_image_24"
             android:backgroundTint="@android:color/transparent"/>
@@ -100,8 +100,8 @@
 
         <ImageButton
             android:id="@+id/ibSendChat"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_baseline_send_24"
             android:backgroundTint="@android:color/transparent"/>
 

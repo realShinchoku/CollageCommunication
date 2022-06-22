@@ -24,6 +24,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 android:src="@drawable/ic_baseline_account_circle_24" />
 
             <TextView
@@ -48,7 +49,7 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:background="@color/com_smart_login_code"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_baseline_more_horiz_24" />
 
         </LinearLayout>
