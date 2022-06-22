@@ -4,8 +4,6 @@
     <string name="facebook_app_id" translatable="false">416225033375891</string>
     <string name="fb_login_protocol_scheme" translatable="false">abc</string>
     <string name="facebook_client_token">68c0a5be984439ba452c0e05f588b9f3</string>
-    <string name="default_web_client_id">973494995848-geonl891hcn3q23fup3nln2qdbbqgfc5.apps.googleusercontent.com</string>
-
     <!-- Strings related to login -->
     <string name="prompt_email">Nhập email</string>
     <string name="prompt_password">Nhập mật khẩu</string>

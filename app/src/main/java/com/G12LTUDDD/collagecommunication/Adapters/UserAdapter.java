@@ -40,23 +40,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
     @Override
     public UserAdapter.UserAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.user_adapter,parent,false);
-        return new UserAdapter.UserAdapterViewHolder(v);
+        return new UserAdapterViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.UserAdapterViewHolder holder, int position) {
         String uid = group.getUsers().get(position);
-        if(group.getAdmins().contains(uid)){
-            holder.ibMenu.setVisibility(View.GONE);
-        }
-        else {
-            holder.ibMenu.setVisibility(View.VISIBLE);
-            holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
-        }
+        if(uid.equals(""))
+            return;
 
-        if(uid.equals(userid)){
+        holder.ibMenu.setVisibility(View.VISIBLE);
+        holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
+
+        if(group.getAdmins().contains(uid) || uid.equals(userid))
             holder.ibMenu.setVisibility(View.GONE);
-        }
 
         Db.collection("Users").document(uid)
             .get()
@@ -87,7 +84,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
     }
 
 
-    public class UserAdapterViewHolder extends RecyclerView.ViewHolder {
+    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
 
         public CircleImageView civImg;
         public TextView tvName;
@@ -103,7 +100,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         }
     }
 
-    private void showMenu(View v, String uid) {
+    public void showMenu(View v, String uid) {
         PopupMenu popupMenu = new PopupMenu(context, v);
         popupMenu.getMenuInflater().inflate(R.menu.menu_user, popupMenu.getMenu());
 
@@ -112,7 +109,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
                 Db.collection("Groups").document(group.getGid()).update("admins", FieldValue.arrayUnion(uid));
             }
             else if (item.getItemId() == R.id.menuDelete) {
-                Db.collection("Groups").document(group.getGid()).update("admins", FieldValue.arrayRemove(uid));
+                Db.collection("Groups").document(group.getGid()).update("users",FieldValue.arrayRemove(uid));
             }
             return true;
         });

@@ -30,13 +30,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     Context context;
     List<Message> messages;
     FirebaseFirestore db;
-    String uid;
+    String uid,gid;
 
-    public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, String uid) {
+    public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, String uid, String gid) {
         this.context = context;
         this.messages = messages;
         this.db = db;
         this.uid = uid;
+        this.gid = gid;
     }
 
     @NonNull
@@ -90,7 +91,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
                     holder.ibDelete.setVisibility(View.GONE);
                 }
             });
-            holder.ibDelete.setOnClickListener(v -> db.collection("Messages").document(message.getKey()).delete());
+            holder.ibDelete.setOnClickListener(v -> {
+                db.collection("Messages").document(message.getKey()).delete();
+                db.collection("Groups").document(gid).update("lastMsg","Tin nhắn đã xóa");
+            });
         }
         else {
             db.collection("Users").document(message.getUid())

@@ -56,6 +56,13 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
+
     public void init() {
 
         Intent i = getIntent();
@@ -77,11 +84,7 @@ public class ChatActivity extends AppCompatActivity {
         tvGroupName = findViewById(R.id.tvChat);
         civImgGroup = findViewById(R.id.civImgGroup);
         tvGroupId = findViewById(R.id.tvGroupId);
-        
-        if(!group.getImg().equals(""))
-            Picasso.get().load(group.getImg()).into(civImgGroup);
-        tvGroupName.setText(group.getName());
-        tvGroupId.setText(group.getGid());
+
 
         final FirebaseUser curUser = auth.getCurrentUser();
         u.setUid(curUser.getUid());
@@ -107,6 +110,10 @@ public class ChatActivity extends AppCompatActivity {
                         if(!group.getUsers().contains(u.getUid())){
                             finish();
                         }
+                        if(!group.getImg().equals(""))
+                            Picasso.get().load(group.getImg()).into(civImgGroup);
+                        tvGroupName.setText(group.getName());
+                        tvGroupId.setText(group.getGid());
                     }
                 });
 
@@ -123,7 +130,7 @@ public class ChatActivity extends AppCompatActivity {
                             Message message = doc.toObject(Message.class);
                             messages.add(message);
                         }
-                        displayMessages(messages, u.getUid());
+                        displayMessages(messages, u.getUid(),group.getGid());
                     }
                 });
 
@@ -192,10 +199,10 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    private void displayMessages(List<Message> messages, String uid) {
+    private void displayMessages(List<Message> messages, String uid, String gid) {
         rvMessage.setHasFixedSize(true);
         rvMessage.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
-        messageAdapter = new MessageAdapter(ChatActivity.this, messages, db, uid);
+        messageAdapter = new MessageAdapter(ChatActivity.this, messages, db, uid, gid);
         rvMessage.setAdapter(messageAdapter);
         rvMessage.scrollToPosition(messageAdapter.getItemCount() - 1);
     }

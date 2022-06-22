@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         loginFacebook();
 
-
     }
         void loginFacebook(){
         lbFacebook.setReadPermissions("email", "public_profile");
