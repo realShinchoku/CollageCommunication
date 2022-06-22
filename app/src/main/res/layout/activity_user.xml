@@ -169,38 +169,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:padding="1dp"
-                    android:src="@drawable/ic_baseline_account_circle_black" />
-
-                <EditText
-                    android:id="@+id/etTen"
-                    android:inputType="text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:textStyle="normal"
-                    android:text="Họ và tên"
-                    android:textSize="16sp"
-                    android:background="@null"
-                    android:editable="true"/>
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="50dp"
-                android:background="#C3C3C3" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:padding="1dp"
                     android:src="@drawable/ic_baseline_groups_24" />
 
                 <EditText

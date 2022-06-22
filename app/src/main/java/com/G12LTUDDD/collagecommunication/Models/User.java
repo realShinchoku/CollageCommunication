@@ -3,14 +3,13 @@ package com.G12LTUDDD.collagecommunication.Models;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    String uid,name, email,img,ten,lop,msv;
+    String uid,name, email,img,lop,msv;
 
     public User() {
         this.uid = "";
         this.name = "";
         this.email = "";
         this.img = "";
-        this.ten = "";
         this.lop = "";
         this.msv = "";
     }
@@ -22,19 +21,11 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", img='" + img + '\'' +
-                ", ten='" + ten + '\'' +
                 ", lop='" + lop + '\'' +
                 ", msv='" + msv + '\'' +
                 '}';
     }
 
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
 
     public String getLop() {
         return lop;
@@ -52,12 +43,11 @@ public class User implements Serializable {
         this.msv = msv;
     }
 
-    public User(String uid, String name, String email, String img, String ten, String lop, String msv) {
+    public User(String uid, String name, String email, String img, String lop, String msv) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.img = img;
-        this.ten = ten;
         this.lop = lop;
         this.msv = msv;
     }

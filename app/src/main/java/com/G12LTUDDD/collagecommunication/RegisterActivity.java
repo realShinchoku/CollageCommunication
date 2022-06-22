@@ -1,10 +1,10 @@
 package com.G12LTUDDD.collagecommunication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText txtEmail, txtPassword, txtUserName, txtRepeatPassword;
-    ProgressBar progressBar;
 
     FirebaseAuth auth;
     FirebaseFirestore db;
@@ -31,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtRegisterEmail);
         txtPassword = findViewById(R.id.txtRegisterPassword);
         txtRepeatPassword = findViewById(R.id.txtRegisterRepeatPassword);
-        progressBar = findViewById(R.id.pgbRegisterLoading);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -45,17 +43,19 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = txtPassword.getText().toString();
         final String repassword = txtRepeatPassword.getText().toString();
 
-        progressBar.setVisibility(View.VISIBLE);
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Đang đăng ký");
+        progressDialog.show();
 
         if(!email.equals("") && !username.equals("") && !password.equals("") && !repassword.equals("")){
             if(password.length() <6){
                 Toast.makeText(getApplicationContext(),"Mật khẩu dài ít nhất 6 ký tự",Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
+                progressDialog.dismiss();
                 return;
             }
             else if(!password.equals(repassword)){
                 Toast.makeText(getApplicationContext(),"Mật khẩu không khớp",Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
+                progressDialog.dismiss();
                 return;
             }
             else {
@@ -76,21 +76,21 @@ public class RegisterActivity extends AppCompatActivity {
                                         .addOnCompleteListener(task1 -> {
                                             if(task1.isSuccessful()) {
                                                 Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
-                                                progressBar.setVisibility(View.GONE);
+                                                progressDialog.dismiss();
                                                 finish();
                                                 Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
                                                 startActivity(i);
                                             }
                                             else{
                                                 Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
-                                                progressBar.setVisibility(View.GONE);
+                                                progressDialog.dismiss();
                                                 return;
                                             }
                                         });
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Email đã tồn tại",Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
                                 return;
                             }
                         });
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(getApplicationContext(),"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_SHORT).show();
-            progressBar.setVisibility(View.GONE);
+            progressDialog.dismiss();
             return;
         }
     }

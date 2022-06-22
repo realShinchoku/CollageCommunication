@@ -34,7 +34,7 @@ public class UserActivity extends AppCompatActivity {
 
     CircleImageView civUser;
     ImageButton ibImg,ibName,ibInfo,ibBack,ibCancel,ibSave;
-    EditText etName,etTen,etLop,etMsv;
+    EditText etName,etLop,etMsv;
     TextView tvEmail;
 
     @Override
@@ -54,7 +54,6 @@ public class UserActivity extends AppCompatActivity {
         civUser = (CircleImageView) findViewById(R.id.civUser);
 
         etName = (EditText) findViewById(R.id.etName);
-        etTen = (EditText) findViewById(R.id.etTen);
         etLop = (EditText) findViewById(R.id.etLop);
         etMsv = (EditText) findViewById(R.id.etMsv);
 
@@ -74,7 +73,7 @@ public class UserActivity extends AppCompatActivity {
         final FirebaseUser curUser = auth.getCurrentUser();
         if(!u.getUid().equals(curUser.getUid())){
             ibImg.setVisibility(View.GONE);
-            ibName.setVisibility(View.GONE);
+            ibName.setVisibility(View.INVISIBLE);
             ibInfo.setVisibility(View.GONE);
         }
 
@@ -98,10 +97,9 @@ public class UserActivity extends AppCompatActivity {
             ShowSaveAndCancel();
         });
         ibInfo.setOnClickListener(v ->{
-            etTen.setKeyListener(variable);
             etLop.setKeyListener(variable);
             etMsv.setKeyListener(variable);
-            etTen.requestFocus();
+            etLop.requestFocus();
             ShowSaveAndCancel();
         });
         ibCancel.setOnClickListener(v ->{
@@ -111,7 +109,7 @@ public class UserActivity extends AppCompatActivity {
         });
         ibSave.setOnClickListener(v -> {
             db.collection("Users").document(u.getUid())
-                            .update("name",etName.getText().toString(),"ten",etTen.getText().toString(),"lop",etLop.getText().toString(),"msv",etMsv.getText().toString());
+                            .update("name",etName.getText().toString(),"lop",etLop.getText().toString(),"msv",etMsv.getText().toString());
             HideSaveAndCancel();
             hideKeyBroad(v);
         });
@@ -144,8 +142,6 @@ public class UserActivity extends AppCompatActivity {
 
         etName.setKeyListener(null);
         etName.clearFocus();
-        etTen.setKeyListener(null);
-        etTen.clearFocus();
         etLop.setKeyListener(null);
         etLop.clearFocus();
         etMsv.setKeyListener(null);
@@ -155,7 +151,6 @@ public class UserActivity extends AppCompatActivity {
     void setEt(){
         etName.setText(u.getName());
         etLop.setText(u.getLop());
-        etTen.setText(u.getTen());
         etMsv.setText(u.getMsv());
     }
 

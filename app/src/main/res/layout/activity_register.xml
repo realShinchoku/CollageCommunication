@@ -113,7 +113,7 @@
         <TextView
             android:id="@+id/lblRegisterHaveacc"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto"
@@ -122,12 +122,5 @@
             android:text="I have Account - Sign in"
             android:textColor="#fff"
             android:textSize="16sp" />
-
-        <ProgressBar
-            android:id="@+id/pgbRegisterLoading"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:visibility="invisible"/>
 
 </LinearLayout>
