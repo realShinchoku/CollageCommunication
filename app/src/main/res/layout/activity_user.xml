@@ -69,7 +69,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/civUser"
                 android:layout_alignBottom="@+id/civUser"
-                android:layout_margin="7dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginBottom="7dp"
                 android:background="#00ff0000"
                 android:src="@drawable/ic_baseline_camera_alt_24" />
         </RelativeLayout>
