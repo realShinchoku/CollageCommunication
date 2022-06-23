@@ -34,7 +34,7 @@ public class UsersListActivity extends AppCompatActivity {
         init();
     }
 
-    void init(){
+    void init() {
         Intent i = getIntent();
         group = (Group) i.getExtras().getSerializable("group");
 
@@ -53,7 +53,7 @@ public class UsersListActivity extends AppCompatActivity {
         db.collection("Users").document(u.getUid())
                 .get()
                 .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         u = task.getResult().toObject(User.class);
                     }
                 });
@@ -64,16 +64,16 @@ public class UsersListActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
+                    if (value.exists()) {
                         group = value.toObject(Group.class);
-                        displayUsers(group,u.getUid());
+                        displayUsers(group, u.getUid());
                     }
                 });
     }
 
-    private void displayUsers(Group group, String uid){
+    private void displayUsers(Group group, String uid) {
         rvUsers.setLayoutManager(new LinearLayoutManager(UsersListActivity.this));
-        userAdapter = new UserAdapter(UsersListActivity.this,group,db,uid);
+        userAdapter = new UserAdapter(UsersListActivity.this, group, db, uid);
         rvUsers.setAdapter(userAdapter);
     }
 }

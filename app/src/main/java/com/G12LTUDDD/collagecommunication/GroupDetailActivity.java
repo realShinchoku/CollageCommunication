@@ -37,8 +37,8 @@ public class GroupDetailActivity extends AppCompatActivity {
 
     CircleImageView civDetail;
     EditText etDetail;
-    ImageButton ibImg,ibDetail,ibBack,ibCancel,ibSave;
-    LinearLayout llList,llAdd,llLeave;
+    ImageButton ibImg, ibDetail, ibBack, ibCancel, ibSave;
+    LinearLayout llList, llAdd, llLeave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,15 @@ public class GroupDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_detail);
         init();
     }
-    void init(){
+
+    void init() {
         Intent i = getIntent();
         group = (Group) i.getExtras().getSerializable("group");
 
         u = new User();
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        reference = FirebaseStorage.getInstance().getReference().child("img/groups/"+group.getGid());
+        reference = FirebaseStorage.getInstance().getReference().child("img/groups/" + group.getGid());
 
         civDetail = (CircleImageView) findViewById(R.id.civDetail);
         etDetail = (EditText) findViewById(R.id.etDetail);
@@ -78,7 +79,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         db.collection("Users").document(u.getUid())
                 .get()
                 .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         u = task.getResult().toObject(User.class);
                     }
                 });
@@ -89,13 +90,13 @@ public class GroupDetailActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
+                    if (value.exists()) {
                         group = value.toObject(Group.class);
-                        if(!group.getUsers().contains(u.getUid())){
+                        if (!group.getUsers().contains(u.getUid())) {
                             finishAffinity();
-                            startActivity(new Intent(GroupDetailActivity.this,GroupChatActivity.class));
+                            startActivity(new Intent(GroupDetailActivity.this, GroupChatActivity.class));
                         }
-                        if(!group.getImg().equals(""))
+                        if (!group.getImg().equals(""))
                             Picasso.get().load(group.getImg()).into(civDetail);
                         setEt();
                     }
@@ -107,14 +108,14 @@ public class GroupDetailActivity extends AppCompatActivity {
             ShowSaveAndCancel();
         });
 
-        ibCancel.setOnClickListener(v ->{
+        ibCancel.setOnClickListener(v -> {
             HideSaveAndCancel();
             setEt();
             hideKeyBroad(v);
         });
         ibSave.setOnClickListener(v -> {
             db.collection("Groups").document(group.getGid())
-                    .update("name",etDetail.getText().toString());
+                    .update("name", etDetail.getText().toString());
             HideSaveAndCancel();
             hideKeyBroad(v);
         });
@@ -124,17 +125,17 @@ public class GroupDetailActivity extends AppCompatActivity {
         ibBack.setOnClickListener(v -> finish());
 
         llLeave.setOnClickListener(v -> {
-            db.collection("Groups").document(group.getGid()).update("users",FieldValue.arrayRemove(u.getUid()));
+            db.collection("Groups").document(group.getGid()).update("users", FieldValue.arrayRemove(u.getUid()));
             finishAffinity();
-            startActivity(new Intent(GroupDetailActivity.this,GroupChatActivity.class));
+            startActivity(new Intent(GroupDetailActivity.this, GroupChatActivity.class));
         });
 
-        llList.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this,UsersListActivity.class).putExtra("group",group)));
+        llList.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this, UsersListActivity.class).putExtra("group", group)));
 
-        llAdd.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this,UserAddActivity.class).putExtra("group",group)));
+        llAdd.setOnClickListener(v -> startActivity(new Intent(GroupDetailActivity.this, UserAddActivity.class).putExtra("group", group)));
     }
 
-    void ShowSaveAndCancel(){
+    void ShowSaveAndCancel() {
         ibSave.setVisibility(View.VISIBLE);
         ibCancel.setVisibility(View.VISIBLE);
         ibBack.setVisibility(View.GONE);
@@ -142,7 +143,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         ibImg.setVisibility(View.GONE);
     }
 
-    void HideSaveAndCancel(){
+    void HideSaveAndCancel() {
         ibSave.setVisibility(View.GONE);
         ibCancel.setVisibility(View.GONE);
         ibBack.setVisibility(View.VISIBLE);
@@ -153,7 +154,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         etDetail.clearFocus();
     }
 
-    void setEt(){
+    void setEt() {
         etDetail.setText(group.getName());
     }
 
@@ -179,14 +180,14 @@ public class GroupDetailActivity extends AppCompatActivity {
                         })
                         .addOnCompleteListener(taskSnapshot -> {
                             reference.getDownloadUrl()
-                                    .addOnSuccessListener(uri -> db.collection("Groups").document(group.getGid()).update("img",uri.toString()));
+                                    .addOnSuccessListener(uri -> db.collection("Groups").document(group.getGid()).update("img", uri.toString()));
                             progressDialog.dismiss();
                         });
             }
         }
     }
 
-    void hideKeyBroad(View v){
+    void hideKeyBroad(View v) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }

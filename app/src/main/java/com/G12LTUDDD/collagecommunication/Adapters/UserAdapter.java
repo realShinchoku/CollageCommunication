@@ -39,65 +39,48 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
     @NonNull
     @Override
     public UserAdapter.UserAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.user_adapter,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.user_adapter, parent, false);
         return new UserAdapterViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.UserAdapterViewHolder holder, int position) {
         String uid = group.getUsers().get(position);
-        if(uid.equals(""))
+        if (uid.equals(""))
             return;
 
         holder.ibMenu.setVisibility(View.VISIBLE);
         holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
 
-        if(group.getAdmins().contains(uid) || uid.equals(userid))
+        if (group.getAdmins().contains(uid) || uid.equals(userid))
             holder.ibMenu.setVisibility(View.GONE);
 
         Db.collection("Users").document(uid)
-            .get()
-            .addOnCompleteListener(task -> {
-                if(task.isSuccessful()){
-                    User u = task.getResult().toObject(User.class);
-                    if(!u.getImg().equals(""))
-                        Picasso.get().load(u.getImg()).into(holder.civImg);
-                    holder.tvName.setText(u.getName());
-                    holder.tvName.setOnClickListener(v -> {
-                        Intent i = new Intent(context, UserActivity.class);
-                        i.putExtra("user", u);
-                        context.startActivity(i);
-                    });
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        User u = task.getResult().toObject(User.class);
+                        if (!u.getImg().equals(""))
+                            Picasso.get().load(u.getImg()).into(holder.civImg);
+                        holder.tvName.setText(u.getName());
+                        holder.tvName.setOnClickListener(v -> {
+                            Intent i = new Intent(context, UserActivity.class);
+                            i.putExtra("user", u);
+                            context.startActivity(i);
+                        });
 
-                    holder.civImg.setOnClickListener(v -> {
-                        Intent i = new Intent(context, UserActivity.class);
-                        i.putExtra("user", u);
-                        context.startActivity(i);
-                    });
-                }
-            });
+                        holder.civImg.setOnClickListener(v -> {
+                            Intent i = new Intent(context, UserActivity.class);
+                            i.putExtra("user", u);
+                            context.startActivity(i);
+                        });
+                    }
+                });
     }
 
     @Override
     public int getItemCount() {
         return group.getUsers().size();
-    }
-
-
-    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
-
-        public CircleImageView civImg;
-        public TextView tvName;
-        public ImageButton ibMenu,ibAdd;
-
-        public UserAdapterViewHolder(View itemView){
-            super(itemView);
-            civImg = itemView.findViewById(R.id.civUserItem);
-            tvName = itemView.findViewById(R.id.tvUserItem);
-            ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
-            ibAdd = itemView.findViewById(R.id.ibAddUserItem);
-            ibAdd.setVisibility(View.GONE);
-        }
     }
 
     public void showMenu(View v, String uid) {
@@ -107,12 +90,27 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menuAdmins) {
                 Db.collection("Groups").document(group.getGid()).update("admins", FieldValue.arrayUnion(uid));
-            }
-            else if (item.getItemId() == R.id.menuDelete) {
-                Db.collection("Groups").document(group.getGid()).update("users",FieldValue.arrayRemove(uid));
+            } else if (item.getItemId() == R.id.menuDelete) {
+                Db.collection("Groups").document(group.getGid()).update("users", FieldValue.arrayRemove(uid));
             }
             return true;
         });
         popupMenu.show();
+    }
+
+    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
+
+        public CircleImageView civImg;
+        public TextView tvName;
+        public ImageButton ibMenu, ibAdd;
+
+        public UserAdapterViewHolder(View itemView) {
+            super(itemView);
+            civImg = itemView.findViewById(R.id.civUserItem);
+            tvName = itemView.findViewById(R.id.tvUserItem);
+            ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
+            ibAdd = itemView.findViewById(R.id.ibAddUserItem);
+            ibAdd.setVisibility(View.GONE);
+        }
     }
 }

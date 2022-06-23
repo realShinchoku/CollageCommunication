@@ -10,6 +10,7 @@
         android:background="@color/com_smart_login_code"
         android:orientation="horizontal"
         android:padding="5dp">
+
         <ImageButton
             android:id="@+id/ibBackUsersList"
             android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsers"
         android:layout_width="match_parent"

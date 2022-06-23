@@ -39,7 +39,7 @@ public class UserAddActivity extends AppCompatActivity {
         init();
     }
 
-    void init(){
+    void init() {
         Intent i = getIntent();
         group = (Group) i.getExtras().getSerializable("group");
 
@@ -62,7 +62,7 @@ public class UserAddActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
+                    if (value.exists()) {
                         group = value.toObject(Group.class);
                         db.collection("Users")
                                 .addSnapshotListener((value1, error1) -> {
@@ -70,15 +70,15 @@ public class UserAddActivity extends AppCompatActivity {
                                         Log.w("TAG", "Listen failed.", error1);
                                         return;
                                     }
-                                    if(!value1.isEmpty()) {
+                                    if (!value1.isEmpty()) {
                                         users = new ArrayList<>();
                                         for (QueryDocumentSnapshot doc : value1) {
-                                            if(!group.getUsers().contains(doc.getId())) {
+                                            if (!group.getUsers().contains(doc.getId())) {
                                                 User user = doc.toObject(User.class);
                                                 users.add(user);
                                             }
                                         }
-                                        displayUsers(users,group.getGid());
+                                        displayUsers(users, group.getGid());
                                     }
                                 });
                     }
@@ -87,39 +87,37 @@ public class UserAddActivity extends AppCompatActivity {
         svUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(query.length()>0)
-                {
+                if (query.length() > 0) {
                     List<User> searchUsers = new ArrayList<>();
-                    for(User user:users){
-                        if(user.getName().toLowerCase().contains(query.toLowerCase())){
+                    for (User user : users) {
+                        if (user.getName().toLowerCase().contains(query.toLowerCase())) {
                             searchUsers.add(user);
                         }
                     }
-                    displayUsers(searchUsers,group.getGid());
+                    displayUsers(searchUsers, group.getGid());
                 }
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.length()>2)
-                {
+                if (newText.length() > 2) {
                     List<User> searchUsers = new ArrayList<>();
-                    for(User user:users){
-                        if(user.getName().toLowerCase().contains(newText.toLowerCase())){
+                    for (User user : users) {
+                        if (user.getName().toLowerCase().contains(newText.toLowerCase())) {
                             searchUsers.add(user);
                         }
                     }
-                    displayUsers(searchUsers,group.getGid());
+                    displayUsers(searchUsers, group.getGid());
                 }
                 return true;
             }
         });
     }
 
-    private void displayUsers(List<User> users, String gid){
+    private void displayUsers(List<User> users, String gid) {
         rvUsers.setLayoutManager(new LinearLayoutManager(UserAddActivity.this));
-        userAddAdapter = new UserAddAdapter(UserAddActivity.this,users,db,gid);
+        userAddAdapter = new UserAddAdapter(UserAddActivity.this, users, db, gid);
         rvUsers.setAdapter(userAddAdapter);
     }
 }

@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         loginFacebook();
 
     }
-        void loginFacebook(){
+
+    void loginFacebook() {
         lbFacebook.setReadPermissions("email", "public_profile");
         lbFacebook.registerCallback(callbackManager, new FacebookCallback<>() {
             @Override
@@ -103,15 +104,15 @@ public class MainActivity extends AppCompatActivity {
                         u.setName(curUser.getDisplayName());
                         u.setImg(curUser.getPhotoUrl().toString());
                         db.collection("Users")
-                            .whereEqualTo("uid",u.getUid())
-                            .get()
-                            .addOnSuccessListener(task1 -> {
-                                if(task1.isEmpty()){
-                                    db.collection("Users").document(u.getUid()).set(u);
-                                    Toast.makeText(getApplicationContext(),"Thành công",Toast.LENGTH_SHORT).show();
-                                }
-                                checkLogin();
-                            });
+                                .whereEqualTo("uid", u.getUid())
+                                .get()
+                                .addOnSuccessListener(task1 -> {
+                                    if (task1.isEmpty()) {
+                                        db.collection("Users").document(u.getUid()).set(u);
+                                        Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
+                                    }
+                                    checkLogin();
+                                });
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -122,51 +123,50 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.dismiss();
     }
 
-    void checkLogin(){
-        if(auth.getCurrentUser() != null){
+    void checkLogin() {
+        if (auth.getCurrentUser() != null) {
             finish();
-            Intent i = new Intent(MainActivity.this,GroupChatActivity.class);
+            Intent i = new Intent(MainActivity.this, GroupChatActivity.class);
             startActivity(i);
         }
 
     }
 
-    public void LoginUser(View v){
+    public void LoginUser(View v) {
 
         final String email = txtEmail.getText().toString();
         final String password = txtPassword.getText().toString();
 
         progressDialog.show();
 
-        if(!email.equals("") && !password.equals("")){
-            auth.signInWithEmailAndPassword(email,password)
+        if (!email.equals("") && !password.equals("")) {
+            auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(),"Thành công",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
                             checkLogin();
 
-                        }
-                        else {
+                        } else {
                             progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(),"Sai email/mật khẩu. Hãy thử lại",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Sai email/mật khẩu. Hãy thử lại", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     });
-        }
-        else {
+        } else {
             progressDialog.dismiss();
-            Toast.makeText(getApplicationContext(),"Vui lòng điền email/ mật khẩu",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Vui lòng điền email/ mật khẩu", Toast.LENGTH_SHORT).show();
             return;
         }
     }
 
-    public  void gotoRegister(View v){
-        Intent i = new Intent(MainActivity.this,RegisterActivity.class);
+    public void gotoRegister(View v) {
+        Intent i = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(i);
     }
-    public void gotoForgotPassword(View v){
-        Intent i = new Intent(MainActivity.this,ForgotPasswordActivity.class);
+
+    public void gotoForgotPassword(View v) {
+        Intent i = new Intent(MainActivity.this, ForgotPasswordActivity.class);
         startActivity(i);
     }
 }

@@ -3,27 +3,7 @@ package com.G12LTUDDD.collagecommunication.Models;
 import java.util.Date;
 
 public class Message {
-    @Override
-    public String toString() {
-        return "Message{" +
-                "gid='" + gid + '\'' +
-                ", value='" + value + '\'' +
-                ", uid='" + uid + '\'' +
-                ", key='" + key + '\'' +
-                ", type='" + type + '\'' +
-                ", time=" + time +
-                '}';
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    String gid,value,uid,key,type;
+    String gid, value, uid, key, type;
     Date time;
 
     public Message(String gid, String value, String uid, String key, Date time, String type) {
@@ -42,6 +22,26 @@ public class Message {
         this.key = "";
         this.time = new Date();
         this.type = "text";
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "gid='" + gid + '\'' +
+                ", value='" + value + '\'' +
+                ", uid='" + uid + '\'' +
+                ", key='" + key + '\'' +
+                ", type='" + type + '\'' +
+                ", time=" + time +
+                '}';
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getKey() {

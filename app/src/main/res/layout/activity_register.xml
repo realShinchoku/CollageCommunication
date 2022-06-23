@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,24 +7,24 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
-        <ImageView
-            android:id="@+id/imgRegisterLogo"
-            android:layout_width="10dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:id="@+id/imgRegisterLogo"
+        android:layout_width="10dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:id="@+id/lblRegisterTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgRegisterLogo"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:text="Register"
-            android:fontFamily="@font/roboto"
-            android:textColor="#fff"
-            android:textSize="35dp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/lblRegisterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgRegisterLogo"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="#fff"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/txtRegisterUsername"
@@ -44,83 +43,83 @@
         android:textColor="#fff"
         android:textColorHint="#fff" />
 
-        <EditText
-            android:id="@+id/txtRegisterEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round_back_light_10"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Your email"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/txtRegisterEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_back_light_10"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:hint="Your email"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
 
-        <EditText
-            android:id="@+id/txtRegisterPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round_back_light_10"
-            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/txtRegisterPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_back_light_10"
+        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
 
-        <EditText
-            android:id="@+id/txtRegisterRepeatPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/round_back_light_10"
-            android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Confirm password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/txtRegisterRepeatPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_back_light_10"
+        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegisterSignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_radius"
-            android:fontFamily="@font/roboto"
-            android:onClick="RegisterUser"
-            android:text="SIGN UP"
-            android:textSize="20sp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_radius"
+        android:fontFamily="@font/roboto"
+        android:onClick="RegisterUser"
+        android:text="SIGN UP"
+        android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/lblRegisterHaveacc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/roboto"
-            android:layout_gravity="center"
-            android:onClick="gotoLogin"
-            android:text="I have Account - Sign in"
-            android:textColor="#fff"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/lblRegisterHaveacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto"
+        android:onClick="gotoLogin"
+        android:text="I have Account - Sign in"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
 </LinearLayout>

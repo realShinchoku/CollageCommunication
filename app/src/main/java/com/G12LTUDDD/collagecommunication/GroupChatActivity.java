@@ -61,18 +61,18 @@ public class GroupChatActivity extends AppCompatActivity {
 
     }
 
-    void init(){
+    void init() {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         u = new User();
         groups = new ArrayList<>();
 
-        rvGroup = (RecyclerView) findViewById(R.id.rvGroup);
-        svGroup = (SearchView) findViewById(R.id.svGroup);
-        ibMenu = (ImageButton) findViewById(R.id.ibGroupMenu);
-        civUser = (CircleImageView) findViewById(R.id.civUserGroup);
-        fabJoin = (FloatingActionButton)  findViewById(R.id.fabJoin);
+        rvGroup = findViewById(R.id.rvGroup);
+        svGroup = findViewById(R.id.svGroup);
+        ibMenu = findViewById(R.id.ibGroupMenu);
+        civUser = findViewById(R.id.civUserGroup);
+        fabJoin = findViewById(R.id.fabJoin);
 
         final FirebaseUser curUser = auth.getCurrentUser();
         u.setUid(curUser.getUid());
@@ -83,22 +83,22 @@ public class GroupChatActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
+                    if (value.exists()) {
                         u = value.toObject(User.class);
-                        if(!u.getImg().equals(""))
+                        if (!u.getImg().equals(""))
                             Picasso.get().load(u.getImg()).into(civUser);
                     }
                 });
 
         db.collection("Groups")
                 .orderBy("modTime", Query.Direction.DESCENDING)
-                .whereArrayContains("users",u.getUid())
+                .whereArrayContains("users", u.getUid())
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(!value.isEmpty()) {
+                    if (!value.isEmpty()) {
                         groups = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
                             Group group = doc.toObject(Group.class);
@@ -119,17 +119,15 @@ public class GroupChatActivity extends AppCompatActivity {
         svGroup.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(query.length()>0)
-                {
+                if (query.length() > 0) {
                     List<Group> searchGroup = new ArrayList<>();
-                    for(Group g:groups){
-                        if(g.getName().toLowerCase().contains(query.toLowerCase())){
+                    for (Group g : groups) {
+                        if (g.getName().toLowerCase().contains(query.toLowerCase())) {
                             searchGroup.add(g);
                         }
                     }
                     displayGroups(searchGroup);
-                }
-                else
+                } else
                     displayGroups(groups);
 
                 return true;
@@ -137,17 +135,15 @@ public class GroupChatActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.length()>2)
-                {
+                if (newText.length() > 2) {
                     List<Group> searchGroup = new ArrayList<>();
-                    for(Group g:groups){
-                        if(g.getName().toLowerCase().contains(newText.toLowerCase())){
+                    for (Group g : groups) {
+                        if (g.getName().toLowerCase().contains(newText.toLowerCase())) {
                             searchGroup.add(g);
                         }
                     }
                     displayGroups(searchGroup);
-                }
-                else
+                } else
                     displayGroups(groups);
 
                 return true;
@@ -170,17 +166,16 @@ public class GroupChatActivity extends AppCompatActivity {
             alertDialog.setView(input);
 
             alertDialog.setPositiveButton("Tham gia", (dialog, which) -> {
-                    String gid = input.getText().toString().toUpperCase();
-                    db.collection("Groups").document(gid).get().addOnCompleteListener(task -> {
-                        if(task.getResult().exists()){
+                String gid = input.getText().toString().toUpperCase();
+                db.collection("Groups").document(gid).get().addOnCompleteListener(task -> {
+                    if (task.getResult().exists()) {
 
-                            db.collection("Groups").document(gid).update("users", FieldValue.arrayUnion(u.getUid()));
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(),"Không tìm thấy nhóm có mã "+gid,Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                        db.collection("Groups").document(gid).update("users", FieldValue.arrayUnion(u.getUid()));
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Không tìm thấy nhóm có mã " + gid, Toast.LENGTH_SHORT).show();
+                    }
                 });
+            });
 
             alertDialog.setNegativeButton("Hủy", (dialog, which) -> dialog.cancel());
             alertDialog.show();
@@ -188,33 +183,34 @@ public class GroupChatActivity extends AppCompatActivity {
     }
 
 
-
-    private void displayGroups(List<Group> groups){
+    private void displayGroups(List<Group> groups) {
         rvGroup.setLayoutManager(new LinearLayoutManager(GroupChatActivity.this));
-        groupAdapter = new GroupAdapter(GroupChatActivity.this,groups,db);
+        groupAdapter = new GroupAdapter(GroupChatActivity.this, groups, db);
         rvGroup.setAdapter(groupAdapter);
     }
 
     // menu
-    private void showMenu(View v){
-        PopupMenu popupMenu = new PopupMenu(GroupChatActivity.this,v);
-        popupMenu.getMenuInflater().inflate(R.menu.menu,popupMenu.getMenu());
+    private void showMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(GroupChatActivity.this, v);
+        popupMenu.getMenuInflater().inflate(R.menu.menu, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menuLogout) {
                 auth.signOut();
                 finish();
                 startActivity(new Intent(GroupChatActivity.this, MainActivity.class));
-            }
-            else if (item.getItemId() == R.id.menuAdd) {
+            } else if (item.getItemId() == R.id.menuAdd) {
                 Group group = new Group();
+
                 group.setName("Nhóm của bạn");
                 List<String> users = new ArrayList<>();
                 users.add(u.getUid());
                 group.setUsers(users);
                 group.setAdmins(users);
                 group.setModTime(Timestamp.now().toDate());
+
                 group.setGid(generateGID());
+
                 db.collection("Groups").document(group.getGid()).set(group);
             }
             return true;
@@ -222,7 +218,8 @@ public class GroupChatActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
-    private String generateGID(){
+
+    private String generateGID() {
         int leftLimit = 65; // letter 'A'
         int rightLimit = 90; // letter 'Z'
         int targetStringLength = 5;

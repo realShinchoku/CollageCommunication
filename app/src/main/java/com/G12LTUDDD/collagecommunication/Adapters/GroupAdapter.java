@@ -36,7 +36,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
     @NonNull
     @Override
     public GroupAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.group_adapter,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.group_adapter, parent, false);
         return new GroupAdapterViewHolder(v);
     }
 
@@ -44,7 +44,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
     public void onBindViewHolder(@NonNull GroupAdapterViewHolder holder, int position) {
 
         Group group = groups.get(position);
-        if(!group.getImg().equals(""))
+        if (!group.getImg().equals(""))
             Picasso.get().load(group.getImg()).into(holder.civImg);
         holder.tvName.setText(group.getName());
         holder.tvMsg.setText(group.getLastMsg());
@@ -71,7 +71,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         public TextView tvTime;
         public LinearLayout llItem;
 
-        public GroupAdapterViewHolder(View itemView){
+        public GroupAdapterViewHolder(View itemView) {
             super(itemView);
             this.civImg = (CircleImageView) itemView.findViewById(R.id.civGroupItem);
             this.tvName = (TextView) itemView.findViewById(R.id.tvNameGroupItem);

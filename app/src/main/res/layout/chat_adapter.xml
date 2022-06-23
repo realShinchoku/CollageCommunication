@@ -19,22 +19,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tvValueChatItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/opo_msg_back"
-            android:padding="10dp"
             android:maxWidth="250dp"
+            android:padding="10dp"
             android:text="This is message"
             android:textColor="#424242"
             android:textSize="14sp" />
+
         <ImageView
             android:id="@+id/ivValueChatItem"
             android:layout_width="225dp"
             android:layout_height="375dp"
-            android:src="@drawable/ic_baseline_image_24"
-            android:background="@color/black"/>
+            android:background="@color/black"
+            android:src="@drawable/ic_baseline_image_24" />
 
         <TextView
             android:id="@+id/tvTimeChatItem"
@@ -49,9 +51,9 @@
         android:id="@+id/ibChatItem"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="5dp"
         android:background="#fff"
         android:gravity="center"
+        android:padding="5dp"
         android:src="@drawable/ic_baseline_delete_24"
         android:visibility="gone" />
 

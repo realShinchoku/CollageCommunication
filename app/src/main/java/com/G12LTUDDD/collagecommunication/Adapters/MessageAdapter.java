@@ -30,7 +30,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     Context context;
     List<Message> messages;
     FirebaseFirestore db;
-    String uid,gid;
+    String uid, gid;
 
     public MessageAdapter(Context context, List<Message> messages, FirebaseFirestore db, String uid, String gid) {
         this.context = context;
@@ -55,14 +55,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
         String time = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").format(message.getTime());
         holder.tvTime.setText(time);
 
-        if(message.getType().equals("text")){
+        if (message.getType().equals("text")) {
             holder.ivValue.setVisibility(View.GONE);
             holder.tvValue.setText(message.getValue());
             holder.tvValue.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             holder.tvValue.setVisibility(View.GONE);
-            if(!message.getValue().equals("")) {
+            if (!message.getValue().equals("")) {
                 Picasso.get().load(message.getValue()).into(holder.ivValue);
                 holder.ivValue.setVisibility(View.VISIBLE);
             }
@@ -93,19 +92,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
             });
             holder.ibDelete.setOnClickListener(v -> {
                 db.collection("Messages").document(message.getKey()).delete();
-                db.collection("Groups").document(gid).update("lastMsg","Tin nhắn đã xóa");
+                db.collection("Groups").document(gid).update("lastMsg", "Tin nhắn đã xóa");
             });
-        }
-        else {
+        } else {
             db.collection("Users").document(message.getUid())
                     .addSnapshotListener((value, error) -> {
                         if (error != null) {
                             Log.w("TAG", "Listen failed.", error);
                             return;
                         }
-                        if(value.exists()) {
+                        if (value.exists()) {
                             User u = value.toObject(User.class);
-                            if(!u.getImg().equals(""))
+                            if (!u.getImg().equals(""))
                                 Picasso.get().load(u.getImg()).into(holder.civImg);
                             holder.civImg.setOnClickListener(v -> {
                                 Intent i = new Intent(context, UserActivity.class);

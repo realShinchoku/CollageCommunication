@@ -33,8 +33,8 @@ public class UserActivity extends AppCompatActivity {
     StorageReference reference;
 
     CircleImageView civUser;
-    ImageButton ibImg,ibName,ibInfo,ibBack,ibCancel,ibSave;
-    EditText etName,etLop,etMsv;
+    ImageButton ibImg, ibName, ibInfo, ibBack, ibCancel, ibSave;
+    EditText etName, etLop, etMsv;
     TextView tvEmail;
 
     @Override
@@ -43,13 +43,14 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         init();
     }
-    void init(){
+
+    void init() {
         Intent i = getIntent();
         u = (User) i.getExtras().getSerializable("user");
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        reference = FirebaseStorage.getInstance().getReference().child("img/users/"+u.getUid());
+        reference = FirebaseStorage.getInstance().getReference().child("img/users/" + u.getUid());
 
         civUser = (CircleImageView) findViewById(R.id.civUser);
 
@@ -71,7 +72,7 @@ public class UserActivity extends AppCompatActivity {
 
         HideSaveAndCancel();
         final FirebaseUser curUser = auth.getCurrentUser();
-        if(!u.getUid().equals(curUser.getUid())){
+        if (!u.getUid().equals(curUser.getUid())) {
             ibImg.setVisibility(View.GONE);
             ibName.setVisibility(View.INVISIBLE);
             ibInfo.setVisibility(View.GONE);
@@ -83,9 +84,9 @@ public class UserActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(value.exists()) {
+                    if (value.exists()) {
                         u = value.toObject(User.class);
-                        if(!u.getImg().equals(""))
+                        if (!u.getImg().equals(""))
                             Picasso.get().load(u.getImg()).into(civUser);
                         setEt();
                     }
@@ -96,20 +97,20 @@ public class UserActivity extends AppCompatActivity {
             etName.requestFocus();
             ShowSaveAndCancel();
         });
-        ibInfo.setOnClickListener(v ->{
+        ibInfo.setOnClickListener(v -> {
             etLop.setKeyListener(variable);
             etMsv.setKeyListener(variable);
             etLop.requestFocus();
             ShowSaveAndCancel();
         });
-        ibCancel.setOnClickListener(v ->{
+        ibCancel.setOnClickListener(v -> {
             HideSaveAndCancel();
             setEt();
             hideKeyBroad(v);
         });
         ibSave.setOnClickListener(v -> {
             db.collection("Users").document(u.getUid())
-                            .update("name",etName.getText().toString(),"lop",etLop.getText().toString(),"msv",etMsv.getText().toString());
+                    .update("name", etName.getText().toString(), "lop", etLop.getText().toString(), "msv", etMsv.getText().toString());
             HideSaveAndCancel();
             hideKeyBroad(v);
         });
@@ -118,12 +119,12 @@ public class UserActivity extends AppCompatActivity {
                     .crop()
                     .start();
         });
-        ibBack.setOnClickListener(v ->{
+        ibBack.setOnClickListener(v -> {
             finish();
         });
     }
 
-    void ShowSaveAndCancel(){
+    void ShowSaveAndCancel() {
         ibSave.setVisibility(View.VISIBLE);
         ibCancel.setVisibility(View.VISIBLE);
         ibBack.setVisibility(View.GONE);
@@ -132,7 +133,7 @@ public class UserActivity extends AppCompatActivity {
         ibImg.setVisibility(View.GONE);
     }
 
-    void HideSaveAndCancel(){
+    void HideSaveAndCancel() {
         ibSave.setVisibility(View.GONE);
         ibCancel.setVisibility(View.GONE);
         ibBack.setVisibility(View.VISIBLE);
@@ -148,7 +149,7 @@ public class UserActivity extends AppCompatActivity {
         etMsv.clearFocus();
     }
 
-    void setEt(){
+    void setEt() {
         etName.setText(u.getName());
         etLop.setText(u.getLop());
         etMsv.setText(u.getMsv());
@@ -177,7 +178,7 @@ public class UserActivity extends AppCompatActivity {
                         .addOnCompleteListener(taskSnapshot -> {
                             reference.getDownloadUrl()
                                     .addOnSuccessListener(uri -> {
-                                        db.collection("Users").document(u.getUid()).update("img",uri.toString());
+                                        db.collection("Users").document(u.getUid()).update("img", uri.toString());
                                     });
                             progressDialog.dismiss();
                         });
@@ -185,7 +186,7 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
-    void hideKeyBroad(View v){
+    void hideKeyBroad(View v) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }

@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    public void RegisterUser(View v){
+    public void RegisterUser(View v) {
 
         final String username = txtUserName.getText().toString();
         final String email = txtEmail.getText().toString();
@@ -47,22 +47,20 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Đang đăng ký");
         progressDialog.show();
 
-        if(!email.equals("") && !username.equals("") && !password.equals("") && !repassword.equals("")){
-            if(password.length() <6){
-                Toast.makeText(getApplicationContext(),"Mật khẩu dài ít nhất 6 ký tự",Toast.LENGTH_SHORT).show();
+        if (!email.equals("") && !username.equals("") && !password.equals("") && !repassword.equals("")) {
+            if (password.length() < 6) {
+                Toast.makeText(getApplicationContext(), "Mật khẩu dài ít nhất 6 ký tự", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
                 return;
-            }
-            else if(!password.equals(repassword)){
-                Toast.makeText(getApplicationContext(),"Mật khẩu không khớp",Toast.LENGTH_SHORT).show();
+            } else if (!password.equals(repassword)) {
+                Toast.makeText(getApplicationContext(), "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
                 return;
-            }
-            else {
+            } else {
 
-                auth.createUserWithEmailAndPassword(email,password)
+                auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 FirebaseUser firebaseUser = auth.getCurrentUser();
 
                                 User u = new User();
@@ -74,37 +72,34 @@ public class RegisterActivity extends AppCompatActivity {
                                         .document(u.getUid())
                                         .set(u)
                                         .addOnCompleteListener(task1 -> {
-                                            if(task1.isSuccessful()) {
+                                            if (task1.isSuccessful()) {
                                                 Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
                                                 progressDialog.dismiss();
                                                 finish();
                                                 Intent i = new Intent(RegisterActivity.this, GroupChatActivity.class);
                                                 startActivity(i);
-                                            }
-                                            else{
-                                                Toast.makeText(getApplicationContext(),"Có lỗi xảy ra",Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
                                                 progressDialog.dismiss();
                                                 return;
                                             }
                                         });
-                            }
-                            else{
-                                Toast.makeText(getApplicationContext(),"Email đã tồn tại",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Email đã tồn tại", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                                 return;
                             }
                         });
             }
-        }
-        else {
-            Toast.makeText(getApplicationContext(),"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
             return;
         }
     }
 
-    public void gotoLogin(View v){
-        Intent i = new Intent(RegisterActivity.this,MainActivity.class);
+    public void gotoLogin(View v) {
+        Intent i = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(i);
     }
 }

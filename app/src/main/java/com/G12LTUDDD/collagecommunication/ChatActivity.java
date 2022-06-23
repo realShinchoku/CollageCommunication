@@ -44,8 +44,8 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView rvMessage;
 
     EditText etInput;
-    ImageButton ibSend, ibBack, ibDetail,ibSendImg;
-    TextView tvGroupName,tvGroupId;
+    ImageButton ibSend, ibBack, ibDetail, ibSendImg;
+    TextView tvGroupName, tvGroupId;
     CircleImageView civImgGroup;
 
     @Override
@@ -79,7 +79,7 @@ public class ChatActivity extends AppCompatActivity {
         etInput = findViewById(R.id.etChat);
         ibSend = findViewById(R.id.ibSendChat);
         ibBack = findViewById(R.id.ibBackChat);
-        ibDetail =findViewById(R.id.ibDetailGroup);
+        ibDetail = findViewById(R.id.ibDetailGroup);
         ibSendImg = findViewById(R.id.ibSendImg);
         tvGroupName = findViewById(R.id.tvChat);
         civImgGroup = findViewById(R.id.civImgGroup);
@@ -94,7 +94,7 @@ public class ChatActivity extends AppCompatActivity {
         db.collection("Users").document(u.getUid())
                 .get()
                 .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         u = task.getResult().toObject(User.class);
                     }
                 });
@@ -105,12 +105,12 @@ public class ChatActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if(!value.exists()) {
+                    if (!value.exists()) {
                         group = value.toObject(Group.class);
-                        if(!group.getUsers().contains(u.getUid())){
+                        if (!group.getUsers().contains(u.getUid())) {
                             finish();
                         }
-                        if(!group.getImg().equals(""))
+                        if (!group.getImg().equals(""))
                             Picasso.get().load(group.getImg()).into(civImgGroup);
                         tvGroupName.setText(group.getName());
                         tvGroupId.setText(group.getGid());
@@ -124,13 +124,13 @@ public class ChatActivity extends AppCompatActivity {
                     if (error != null) {
                         return;
                     }
-                    if(!value.isEmpty()) {
+                    if (!value.isEmpty()) {
                         messages = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
                             Message message = doc.toObject(Message.class);
                             messages.add(message);
                         }
-                        displayMessages(messages, u.getUid(),group.getGid());
+                        displayMessages(messages, u.getUid(), group.getGid());
                     }
                 });
 
@@ -148,7 +148,7 @@ public class ChatActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         message.setKey(task.getResult().getId());
                         db.collection("Messages").document(message.getKey()).update("key", message.getKey());
-                        db.collection("Groups").document(group.getGid()).update("lastMsg",message.getValue(),"modTime",message.getTime());
+                        db.collection("Groups").document(group.getGid()).update("lastMsg", message.getValue(), "modTime", message.getTime());
                     }
                 });
             }
@@ -161,7 +161,7 @@ public class ChatActivity extends AppCompatActivity {
         });
 
         ibDetail.setOnClickListener(v -> {
-            startActivity(new Intent(ChatActivity.this, GroupDetailActivity.class).putExtra("group",group));
+            startActivity(new Intent(ChatActivity.this, GroupDetailActivity.class).putExtra("group", group));
         });
     }
 
@@ -182,17 +182,17 @@ public class ChatActivity extends AppCompatActivity {
                 db.collection("Messages").add(message).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         message.setKey(task.getResult().getId());
-                        reference = reference.child("img/messages/"+message.getKey());
+                        reference = reference.child("img/messages/" + message.getKey());
                         reference.putFile(selectedImageUri)
                                 .addOnCompleteListener(taskSnapshot -> {
                                     reference.getDownloadUrl()
                                             .addOnSuccessListener(uri -> {
                                                 db.collection("Messages").document(message.getKey())
-                                                        .update("key", message.getKey(),"value", uri.toString());
+                                                        .update("key", message.getKey(), "value", uri.toString());
                                             });
                                 });
                         db.collection("Groups").document(group.getGid())
-                                .update("lastMsg",u.getName()+" đã gửi 1 ảnh","modTime",message.getTime());
+                                .update("lastMsg", u.getName() + " đã gửi 1 ảnh", "modTime", message.getTime());
                     }
                 });
             }

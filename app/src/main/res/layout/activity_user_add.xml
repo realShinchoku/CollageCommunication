@@ -10,6 +10,7 @@
         android:background="@color/com_smart_login_code"
         android:orientation="horizontal"
         android:padding="5dp">
+
         <ImageButton
             android:id="@+id/ibBackUsersAdd"
             android:layout_width="wrap_content"
@@ -19,12 +20,14 @@
             android:padding="5dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
     </LinearLayout>
+
     <SearchView
         android:id="@+id/svUsersAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@drawable/search" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsersAdd"
         android:layout_width="match_parent"

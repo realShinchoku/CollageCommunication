@@ -38,7 +38,7 @@ public class UserAddAdapter extends RecyclerView.Adapter<UserAddAdapter.UserAddA
     @NonNull
     @Override
     public UserAddAdapter.UserAddAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.user_adapter,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.user_adapter, parent, false);
         return new UserAddAdapter.UserAddAdapterViewHolder(v);
     }
 
@@ -46,7 +46,7 @@ public class UserAddAdapter extends RecyclerView.Adapter<UserAddAdapter.UserAddA
     public void onBindViewHolder(@NonNull UserAddAdapter.UserAddAdapterViewHolder holder, int position) {
         User u = users.get(position);
 
-        if(u.getImg().equals(""))
+        if (u.getImg().equals(""))
             Picasso.get().load(u.getImg()).into(holder.civImg);
         holder.tvName.setText(u.getName());
 
@@ -77,9 +77,9 @@ public class UserAddAdapter extends RecyclerView.Adapter<UserAddAdapter.UserAddA
 
         public CircleImageView civImg;
         public TextView tvName;
-        public ImageButton ibMenu,ibAdd;
+        public ImageButton ibMenu, ibAdd;
 
-        public UserAddAdapterViewHolder(View itemView){
+        public UserAddAdapterViewHolder(View itemView) {
             super(itemView);
             civImg = itemView.findViewById(R.id.civUserItem);
             tvName = itemView.findViewById(R.id.tvUserItem);
