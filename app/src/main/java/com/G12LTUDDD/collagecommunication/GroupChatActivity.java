@@ -19,8 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.G12LTUDDD.collagecommunication.Adapters.GroupAdapter;
 import com.G12LTUDDD.collagecommunication.Models.Group;
 import com.G12LTUDDD.collagecommunication.Models.User;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,8 +52,6 @@ public class GroupChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(getApplication());
         setContentView(R.layout.activity_group_chat);
         init();
 
