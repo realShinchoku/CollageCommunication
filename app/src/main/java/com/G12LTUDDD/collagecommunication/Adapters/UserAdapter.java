@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         holder.ibMenu.setVisibility(View.GONE);
         holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
 
-        if(group.getAdmins().contains(userid))
+        if (group.getAdmins().contains(userid))
             holder.ibMenu.setVisibility(View.VISIBLE);
 
         if (uid.equals(userid))
