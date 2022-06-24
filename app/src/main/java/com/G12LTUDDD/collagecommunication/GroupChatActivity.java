@@ -204,7 +204,7 @@ public class GroupChatActivity extends AppCompatActivity {
                 group.setUsers(users);
                 group.setAdmins(users);
                 group.setModTime(Timestamp.now().toDate());
-
+                group.setLastMsg(u.getName() + " đã tạo nhóm");
                 group.setGid(generateGID());
 
                 db.collection("Groups").document(group.getGid()).set(group);
