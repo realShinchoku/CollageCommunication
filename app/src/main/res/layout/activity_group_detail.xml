@@ -55,7 +55,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:padding="5dp"
-                android:src="@drawable/ic_baseline_account_circle_black_120dp" />
+                android:src="@drawable/com_facebook_profile_picture_blank_portrait" />
 
             <ImageButton
                 android:id="@+id/ibImgDetail"

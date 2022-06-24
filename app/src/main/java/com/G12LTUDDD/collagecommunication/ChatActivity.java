@@ -105,7 +105,7 @@ public class ChatActivity extends AppCompatActivity {
                         Log.w("TAG", "Listen failed.", error);
                         return;
                     }
-                    if (!value.exists()) {
+                    if (value.exists()) {
                         group = value.toObject(Group.class);
                         if (!group.getUsers().contains(u.getUid())) {
                             finish();

@@ -49,10 +49,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         if (uid.equals(""))
             return;
 
-        holder.ibMenu.setVisibility(View.VISIBLE);
+        holder.ibMenu.setVisibility(View.GONE);
         holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
 
-        if (group.getAdmins().contains(uid) || uid.equals(userid))
+        if(group.getAdmins().contains(userid))
+            holder.ibMenu.setVisibility(View.VISIBLE);
+
+        if (uid.equals(userid))
             holder.ibMenu.setVisibility(View.GONE);
 
         Db.collection("Users").document(uid)
