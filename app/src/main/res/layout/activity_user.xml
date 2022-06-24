@@ -41,18 +41,10 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/btn_radius_background_blue"
             android:padding="5dp"
+            android:layout_gravity="right"
             android:src="@drawable/ic_baseline_check_24" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -76,51 +68,36 @@
                 android:background="#00ff0000"
                 android:src="@drawable/ic_baseline_camera_alt_24" />
         </RelativeLayout>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/etName"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="34dp"
-            android:background="@null"
-            android:editable="true"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:inputType="text"
-            android:text="Tên người dùng"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center">
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:editable="true"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:inputType="text"
+                android:text="Tên người dùng"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginStart="34dp"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/ibName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="#00ff0000"
-            android:src="@drawable/ic_baseline_edit_black" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
+            <ImageButton
+                android:id="@+id/ibName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ff0000"
+                android:layout_toEndOf="@+id/etName"
+                android:src="@drawable/ic_baseline_edit_black"
+                android:layout_marginStart="10dp"/>
+        </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
