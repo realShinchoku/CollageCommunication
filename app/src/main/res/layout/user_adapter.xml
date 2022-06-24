@@ -10,18 +10,29 @@
         android:layout_height="40dp"
         android:layout_margin="5dp"
         android:src="@drawable/com_facebook_profile_picture_blank_portrait" />
-
-    <TextView
-        android:id="@+id/tvUserItem"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:padding="5dp"
-        android:text="User Name"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvUserItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="User Name"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvQuyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="Người dùng"/>
+    </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/ibMenuUserItem"

@@ -207,6 +207,8 @@ public class GroupChatActivity extends AppCompatActivity {
                 group.setLastMsg(u.getName() + " đã tạo nhóm");
                 group.setGid(generateGID());
 
+                group.setOwn(u.getUid());
+
                 db.collection("Groups").document(group.getGid()).set(group);
             }
             return true;

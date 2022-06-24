@@ -29,7 +29,6 @@
             android:text="Group Name"
             android:textSize="18sp"
             android:textStyle="bold" />
-
         <TextView
             android:id="@+id/tvMsgGroupItem"
             android:layout_width="wrap_content"
@@ -40,13 +39,22 @@
             android:text="Message"
             android:textSize="14sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvTimeGroupItem"
-        android:layout_width="50dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginRight="10dp"
-        android:padding="5dp"
-        android:text="12:54"
-        android:textStyle="bold" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvTimeGroupItem"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:text="12:54"
+            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/ivGroupPinned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_push_pin_24"/>
+    </LinearLayout>
 </LinearLayout>

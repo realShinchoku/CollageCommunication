@@ -78,14 +78,18 @@ public class UserAddAdapter extends RecyclerView.Adapter<UserAddAdapter.UserAddA
         public CircleImageView civImg;
         public TextView tvName;
         public ImageButton ibMenu, ibAdd;
+        public TextView tvQuyen;
+
 
         public UserAddAdapterViewHolder(View itemView) {
             super(itemView);
-            civImg = itemView.findViewById(R.id.civUserItem);
-            tvName = itemView.findViewById(R.id.tvUserItem);
-            ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
-            ibAdd = itemView.findViewById(R.id.ibAddUserItem);
-            ibMenu.setVisibility(View.GONE);
+            this.civImg = itemView.findViewById(R.id.civUserItem);
+            this.tvName = itemView.findViewById(R.id.tvUserItem);
+            this.ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
+            this.ibAdd = itemView.findViewById(R.id.ibAddUserItem);
+            this.tvQuyen = (TextView) itemView.findViewById(R.id.tvQuyen);
+            this.tvQuyen.setVisibility(View.GONE);
+            this.ibMenu.setVisibility(View.GONE);
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,8 +43,13 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
 
     @Override
     public void onBindViewHolder(@NonNull GroupAdapterViewHolder holder, int position) {
-
         Group group = groups.get(position);
+
+
+        if(group.isPinned())
+            holder.ivPinned.setVisibility(View.VISIBLE);
+        else
+            holder.ivPinned.setVisibility(View.GONE);
         if (!group.getImg().equals(""))
             Picasso.get().load(group.getImg()).into(holder.civImg);
         holder.tvName.setText(group.getName());
@@ -70,7 +76,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         public TextView tvMsg;
         public TextView tvTime;
         public LinearLayout llItem;
-
+        public ImageView ivPinned;
         public GroupAdapterViewHolder(View itemView) {
             super(itemView);
             this.civImg = (CircleImageView) itemView.findViewById(R.id.civGroupItem);
@@ -78,6 +84,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
             this.tvMsg = (TextView) itemView.findViewById(R.id.tvMsgGroupItem);
             this.tvTime = (TextView) itemView.findViewById(R.id.tvTimeGroupItem);
             this.llItem = (LinearLayout) itemView.findViewById(R.id.llGroupItem);
+            this.ivPinned = (ImageView) itemView.findViewById(R.id.ivGroupPinned);
+
         }
     }
 }

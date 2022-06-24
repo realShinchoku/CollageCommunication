@@ -49,6 +49,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         if (uid.equals(""))
             return;
 
+        if(group.getAdmins().contains(uid))
+            holder.tvQuyen.setText("Quản trị");
+
+        if(group.getOwn().equals(uid))
+            holder.tvQuyen.setText("Chủ sở hữu");
+
         holder.ibMenu.setVisibility(View.GONE);
         holder.ibMenu.setOnClickListener(v -> showMenu(v, uid));
 
@@ -106,14 +112,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
         public CircleImageView civImg;
         public TextView tvName;
         public ImageButton ibMenu, ibAdd;
+        public TextView tvQuyen;
 
         public UserAdapterViewHolder(View itemView) {
             super(itemView);
-            civImg = itemView.findViewById(R.id.civUserItem);
-            tvName = itemView.findViewById(R.id.tvUserItem);
-            ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
-            ibAdd = itemView.findViewById(R.id.ibAddUserItem);
-            ibAdd.setVisibility(View.GONE);
+            this.civImg = itemView.findViewById(R.id.civUserItem);
+            this.tvName = itemView.findViewById(R.id.tvUserItem);
+            this.ibMenu = itemView.findViewById(R.id.ibMenuUserItem);
+            this.ibAdd = itemView.findViewById(R.id.ibAddUserItem);
+            this.ibAdd.setVisibility(View.GONE);
+            this.tvQuyen = (TextView) itemView.findViewById(R.id.tvQuyen);
         }
     }
 }
