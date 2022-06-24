@@ -46,7 +46,7 @@ public class UserAddAdapter extends RecyclerView.Adapter<UserAddAdapter.UserAddA
     public void onBindViewHolder(@NonNull UserAddAdapter.UserAddAdapterViewHolder holder, int position) {
         User u = users.get(position);
 
-        if (u.getImg().equals(""))
+        if (!u.getImg().equals(""))
             Picasso.get().load(u.getImg()).into(holder.civImg);
         holder.tvName.setText(u.getName());
 
